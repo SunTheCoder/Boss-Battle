@@ -1,6 +1,5 @@
 const { attributes } = require(`./attributes`)
-const { player1 } = require(`./main`)
-const { boss1 } = require(`./main`)
+
 
 
 
