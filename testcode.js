@@ -44,3 +44,6 @@
     // console.log('')
     // console.log(boss1.logStats())
     // console.log(player1.logStats())
+
+
+    ///IF READLINE === "CERTAIN LEVEL" CONSTRUCT BOSS1 WITH X ATTRIBUTES/PARAMETERS
