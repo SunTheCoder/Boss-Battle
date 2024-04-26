@@ -1,14 +1,16 @@
 const { boss1 } = require('./characters')
 const { player1 } = require('./characters')
 
-const playGame = (count) => {
+//const readline = require('readline');
+
+const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
     if (count === undefined) {
         console.log('o----(::::::::::>')
         console.log('YOUR EPIC BOSS BATTLE BEGINS!')
         console.log('o----(::::::::::>')
         console.log('')
         console.log(boss1.logStats())
-        console.log('Boss items:', boss1.Items.join(', '))
+        //console.log('Boss items:', boss1.Items.join(', '))
         console.log('')
         console.log(player1.logStats())
         console.log('Hero items:', player1.Items.join(', '))
@@ -44,21 +46,28 @@ const playGame = (count) => {
         return 'YOU HAVE EMERGED TRIUMPHANT, HERO!'
     }
 
-    console.log('o----(::::::::::>')
+    console.log(boss1.bossAttackChoice(), player1.playerAttackChoice(), )
     
-    console.log(player1.playerAttackChoice(), boss1.bossAttackChoice())
+    // console.log(boss1.logStats())
+    // console.log(player1.logStats())
+    
+
+
+    // console.log('o----(::::::::::>')
+    
+    // console.log(player1.playerAttackChoice(), boss1.bossAttackChoice())
 
     
-    console.log('o----(::::::::::>')
-    console.log('')
-    console.log(boss1.logStats())
-    console.log('Boss items:', boss1.Items.join(', '))
-    console.log('')
-    console.log(player1.logStats())
-    console.log('Hero items:', player1.Items.join(', '))
-    console.log('')
+    // console.log('o----(::::::::::>')
+    // console.log('')
+    // console.log(boss1.logStats())
+    // console.log('Boss items:', boss1.Items.join(', '))
+    // console.log('')
+    // console.log(player1.logStats())
+    // console.log('Hero items:', player1.Items.join(', '))
+    // console.log('')
     
-    return playGame(count + 1)
+    return 
 
 }
 

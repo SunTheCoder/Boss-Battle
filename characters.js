@@ -30,6 +30,7 @@ class Characters {
         }
         return `Health:  ${arr.join('')}` 
     }
+    //OLD BAR CODE
     // getDefenseBar() {
     //     let arr = []
     //     for (let i = 0; i <= this.Defense; i++) {
@@ -105,11 +106,53 @@ class Characters {
         else return this.DefenseState === true
     }
     playerAttackChoice() {
-        let attacks = Object.entries(this.Attacks)
-        let attack = Math.floor(Math.random() * Object.keys(this.Attacks).length)
-        console.log(`Player Attack: ${attacks[attack][0]}`)
-        return boss1.Health = boss1.Health - attacks[attack][1]
+        const readline = require('node:readline');
+        const { stdin: input, stdout: output } = require('node:process');
+
+        const rl = readline.createInterface({ input, output });
+      
+        rl.question('Choose your attack from the Hero\'s \"Attacks\" list! ', (attack) => {
+                attack = attack.toLowerCase();
+
+                if (attack === 'rpg') { 
+                    boss1.Health = boss1.Health - (Object.values(player1.Attacks)[0])
+                    console.log('Boss', boss1.getHealthBar())
+                    rl.close()   
+                }
+                else if (attack === 'airstrike') {
+                    boss1.Health = boss1.Health - (Object.values(player1.Attacks)[1])
+                    console.log('Boss', boss1.getHealthBar())
+                    rl.close()    
+                }
+                else if (attack === 'grenade') {
+                    boss1.Health = boss1.Health - (Object.values(player1.Attacks)[2])
+                    console.log('Boss', boss1.getHealthBar())
+                    rl.close()    
+                }
+                else if (attack === 'laser strike') {
+                    boss1.Health = boss1.Health - (Object.values(player1.Attacks)[3])
+                    console.log('Boss', boss1.getHealthBar())
+                    rl.close()    
+                }
+                else if (attack === 'precision strike') {
+                    boss1.Health = boss1.Health - (Object.values(player1.Attacks)[4])
+                    console.log('Boss', boss1.getHealthBar())
+                    rl.close()    
+                }
+                else if (attack === 'mortar') {
+                    boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5])
+                    console.log('Boss', boss1.getHealthBar())
+                    rl.close()    
+                }
+            
+        })
+        // let attacks = Object.entries(this.Attacks)
+        // let attack = Math.floor(Math.random() * Object.keys(this.Attacks).length)
+        // console.log(`Player Attack: ${attacks[attack][0]}`)
+        // return boss1.Health = boss1.Health - attacks[attack][1]
     }
+    
+
     playerDefense() {
 
     }
@@ -220,14 +263,20 @@ class Characters {
             //console.log('YOOOOOOOOOOOOOOOO', player1.defenseState)
             let res = player1.Defense - attacks[attack][1]
             if (res >= 0) {
-                return player1.Defense = player1.Defense - attacks[attack][1]
+                player1.Defense = player1.Defense - attacks[attack][1]
+                console.log('Hero', player1.getHealthBar())
+                return ''
                 
             }
-            return player1.Health = player1.Health - (attacks[attack][1] - player1.Defense)
+            player1.Health = player1.Health - (attacks[attack][1] - player1.Defense)
+            console.log('Hero', player1.getHealthBar())
+            return ''
             
 
         }
-        return player1.Health = player1.Health - attacks[attack][1]
+        player1.Health = player1.Health - attacks[attack][1]
+        console.log('Hero', player1.getHealthBar())
+        return ''
         
     }
     bossDefense() {
