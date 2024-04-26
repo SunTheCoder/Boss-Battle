@@ -111,45 +111,64 @@ class Characters {
 
         const rl = readline.createInterface({ input, output });
       
-        rl.question('Choose your attack from the Hero\'s \"Attacks\" list! ', (attack) => {
+        rl.question('\nChoose your attack from the Hero\'s \"Attacks\" list!\n', (attack) => {
                 attack = attack.toLowerCase();
-
+                //EXPLOSIVE ATTACKS//
                 if (attack === 'rpg') { 
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[0])
-                    console.log('Boss', boss1.getHealthBar())
+                    console.log('\nSweet, sweet, destruction!\n')
+                    console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
+                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )
+
                 }
                 else if (attack === 'airstrike') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[1])
-                    console.log('Boss', boss1.getHealthBar())
-                    rl.close()    
+                    console.log('\nSpreading democracy!\n')
+                    console.log('Boss', boss1.getHealthBar(), '\n')
+                    rl.close()   
+                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), ) 
                 }
                 else if (attack === 'grenade') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[2])
-                    console.log('Boss', boss1.getHealthBar())
-                    rl.close()    
+                    console.log('\nHere comes the BOOM!\n')
+                    console.log('Boss', boss1.getHealthBar(), '\n')
+                    rl.close()   
+                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )  
                 }
                 else if (attack === 'laser strike') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[3])
-                    console.log('Boss', boss1.getHealthBar())
-                    rl.close()    
+                    console.log('\nZip, Zap, Zow, BITCH!\n')
+                    console.log('Boss', boss1.getHealthBar(), '\n')
+                    rl.close()   
+                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
                 }
                 else if (attack === 'precision strike') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[4])
-                    console.log('Boss', boss1.getHealthBar())
-                    rl.close()    
+                    console.log('\nWait for it..............BOOOOM!\n')
+                    console.log('Boss', boss1.getHealthBar(), '\n')
+                    rl.close()   
+                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
                 }
                 else if (attack === 'mortar') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5])
-                    console.log('Boss', boss1.getHealthBar())
-                    rl.close()    
+                    console.log('\nHail Mary!\n')
+                    console.log('Boss', boss1.getHealthBar(), '\n')
+                    rl.close()   
+                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
+                } 
+                else {
+                    console.log('Enter a valid response please:\n', 'RPG\n', 'Airstrike\n', 'Grenade\n', 'Laser Strike\n', 'Precision Strike\n', 'Mortar\n')
+                    rl.close()
+                    return this.playerAttackChoice()
                 }
-            
+           
         })
         // let attacks = Object.entries(this.Attacks)
         // let attack = Math.floor(Math.random() * Object.keys(this.Attacks).length)
         // console.log(`Player Attack: ${attacks[attack][0]}`)
         // return boss1.Health = boss1.Health - attacks[attack][1]
+        return ''
     }
     
 
