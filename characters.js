@@ -106,6 +106,23 @@ class Characters {
         else return this.DefenseState === true
     }
     playerAttackChoice() {
+        if (player1.Health <= 0) {
+            
+            console.log('\no----(::::::::::>')
+            console.log ('YOU LOSE!')
+            console.log('o----(::::::::::>')
+            console.log('') 
+            
+            return ''
+        } else if (boss1.Health <= 0) {
+            
+            console.log('o----(::::::::::>')
+            console.log ('YOU HAVE EMERGED TRIUMPHANT, HERO!') 
+            console.log('o----(::::::::::>')
+            console.log('')
+    
+            return ''
+        }
         const readline = require('node:readline');
         const { stdin: input, stdout: output } = require('node:process');
 
@@ -116,10 +133,11 @@ class Characters {
                 //EXPLOSIVE ATTACKS//
                 if (attack === 'rpg') { 
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[0])
-                    console.log('\nSweet, sweet, destruction!\n')
+                    console.log('\nSweet, sweet, Destruction!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )
+                    console.log('Hero items: ', this.Items.join(', '))
 
                 }
                 else if (attack === 'airstrike') {

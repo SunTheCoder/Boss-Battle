@@ -18,13 +18,15 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
         
     }
     
-    if (player1.Health <= 0) {
-        console.log('o----(::::::::::>')
-        console.log ('YOU LOSE!')
-        console.log('o----(::::::::::>')
-        console.log('') 
-        return 'YOU LOSE!'
-    }
+    // if (player1.Health <= 0) {
+    //     rl.close()
+    //     console.log('o----(::::::::::>')
+    //     console.log ('YOU LOSE!')
+    //     console.log('o----(::::::::::>')
+    //     console.log('') 
+        
+    //     return 'YOU LOSE!'
+    // }
     if (player1.Health <= 40) {
         player1.playerUseHealingItem()
         //console.log(player1.Items)
@@ -37,14 +39,15 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
     if (player1.Health === Math.floor(Math.random() * player1.Health) || player1.Health <= 25) {
         player1.playerUseBoostItem()
     }
-    if (boss1.Health <= 0) {
-        console.log('o----(::::::::::>')
-        console.log ('YOU HAVE EMERGED TRIUMPHANT, HERO!') 
-        console.log('o----(::::::::::>')
-        console.log('')
+    // if (boss1.Health <= 0) {
+    //     rl.close()
+    //     console.log('o----(::::::::::>')
+    //     console.log ('YOU HAVE EMERGED TRIUMPHANT, HERO!') 
+    //     console.log('o----(::::::::::>')
+    //     console.log('')
 
-        return 'YOU HAVE EMERGED TRIUMPHANT, HERO!'
-    }
+    //     return 'YOU HAVE EMERGED TRIUMPHANT, HERO!'
+    // }
 
     console.log(boss1.bossAttackChoice(), player1.playerAttackChoice(), )
     
