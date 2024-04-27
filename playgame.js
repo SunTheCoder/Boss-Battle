@@ -10,7 +10,7 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
         // console.log('o----(::::::::::>')
         console.log('\n', boss1.logStats())
         //console.log('Boss items:', boss1.Items.join(', '))
-        console.log(player1.logStats(), 'Hero Items:', player1.Items.join(', '), '\n', '\no----(::::::::::>\n')
+        console.log(player1.logStats(), '\nHero items:\n', '\n', player1.Items.map(item => ' ' + item[0] + ': ' + item[1]).join(', '), '\n', '\no----(::::::::::>')
         
     }
     if (player1.Health <= 40) {
@@ -22,9 +22,10 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
         player1.playerUseDefenseItem()
       
     }
-    if (player1.Health === Math.floor(Math.random() * player1.Health) || player1.Health <= 25) {
-        player1.playerUseBoostItem()
-    }
+    // if (player1.Health === Math.floor(Math.random() * player1.Health) || player1.Health <= 25) {
+    //     player1.playerUseBoostItem()
+    // }
+    console.log(' NEW TURN!\no----(::::::::::>\n')
     console.log(boss1.bossAttackChoice(), player1.playerChoice())
 
     return

@@ -13,7 +13,7 @@ const attributes = {
     atrophyAttacks:   {'Poison Dart': 7,    'Touch of Death': 17, 'Poison Slash': 13, 'Ashes to Ashes': 25,  'Zulu Spear': 16},
     
     itemsTierOne:   {'Herbs': 25,              'Passionfruit': 25,  'Bark Shield': 25,      'Herbal Salve': null, 'Quickness Potion': null, 'Smoke Bomb': null},
-    itemsTierTwo:   {'Tonic': 50,              'Mana Potion': 50,   'Steel Shield': 50,     'Holy Water': null,   'Alchemist Vial': null,   'Shriveled Head': null},
+    itemsTierTwo:   {'Tonic': 50,              'Mana Potion': 50,   'Steel Shield': 50,     'Holy Water': null,   'Alchemist Vial': null,   'Shriveled Head': 'Boss health cut by 1/5'},
     itemsTierThree: {'Suluku\'s Blessing': 75, 'Mystics Water': 75, 'Immovable Object': 75, 'Panacea': null,      'Ancestral Boon': null,   'Death': null}
     
     }

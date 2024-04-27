@@ -38,7 +38,7 @@ class Characters {
         return `Defense: ${arr.join('')}`
     }
     getAttacks() {   
-        return `Attacks: ${Object.keys(this.Attacks).join(', ')}`
+        return `Attacks:\n\n  ${Object.keys(this.Attacks).join(', ')}`
     }
     
     getItems() {
@@ -67,7 +67,7 @@ class Characters {
         console.log(this.getDefenseBar(this.Defense), '\n')
         console.log(this.Name, this.getAttacks())
         //console.log(this.getItems())
-        return '';
+        return ''
     }
     //BATTLE
     gameStartItems() {
@@ -151,13 +151,15 @@ class Characters {
         rl.question('\nChoose your attack or item from the Hero\'s \'Attacks\' or \'Items\' list!\n', (choice) => {
                 choice = choice.toLowerCase();
                 //EXPLOSIVE ATTACKS//
-                if (choice === 'rpg' || choice === 'r') { 
+                if (choice === 'rpg' || choice === 'r') {  //<-----MAIN FUNCTION LOGIC TO COPY FOR ATTACKS
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[0])
                     console.log('\nSweet, sweet, Destruction!\n')
-                    console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n')
+                    console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice())
-                    console.log('Hero items: ', this.Items.join(', '))
+                    console.log('Hero Items:\n', '\n', this.Items.map(item => item[0] + ': ' + item[1]).join(', '))
+                    console.log('\nHero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => item[0] + ': ' + item[1]).join(', '))
+
                 }
                 else if (choice === 'airstrike' || choice === 'a') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[1])
