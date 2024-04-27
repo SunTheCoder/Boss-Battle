@@ -177,26 +177,29 @@ class Characters {
                     console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
                 } 
                 //HEALING ITEMS
-                else if (choice === 'Herbs' || choice === 'h') {
-                    this.Items.splice(this.Items.indexOf(item), 1)
+                else if (choice === 'herbs' || choice === 'h') {
+                    this.Items.splice(this.Items.indexOf('Herbs'), 1)
                     player1.Health = player1.Health + 25
-                    console.log('Hero used Herbs! Health +25!')
+                    console.log('\nHero used Herbs! Health +25!\n')
+                    console.log(this.Items.join(', '))
                     //console.log('Hero', player1.getHealthBar()) 
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
                 } 
-                else if (choice === 'Tonic' || choice === 't') {
-                    this.Items.splice(this.Items.indexOf(item), 1)
+                else if (choice === 'tonic' || choice === 't') {
+                    this.Items.splice(this.Items.indexOf('Tonic'), 1)
                     player1.Health = player1.Health + 50
-                    console.log('Hero used Tonic! Health +50!')
+                    console.log('\nHero used Tonic! Health +50!\n')
+                    console.log(this.Items.join(', '))
                     //            console.log('Hero', player1.getHealthBar())
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
                 } 
-                else if (choice === 'Suluku\'s Blessing' || choice === 's') {
-                    this.Items.splice(this.Items.indexOf(choice), 1)
+                else if (choice === 'suluku\'s blessing' || choice === 's') {
+                    this.Items.splice(this.Items.indexOf('Suluku\'s Blessing'), 1)
                     player1.Health = player1.Health + 75
-                    console.log('Hero used Suluku\'s Blessing! Health +75!')
+                    console.log('\nHero used Suluku\'s Blessing! Health +75!\n')
+                    console.log(this.Items.join(', '))
                             // console.log('Hero', player1.getHealthBar())
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
