@@ -50,6 +50,7 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
     // }
 
     console.log(boss1.bossAttackChoice(), player1.playerAttackChoice(), )
+    //console.log(player1.playerUseHealingItem())
     
     
 //     // console.log(boss1.logStats())
