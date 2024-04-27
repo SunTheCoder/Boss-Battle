@@ -105,7 +105,7 @@ class Characters {
         if (this.Defense === 0) return this.DefenseState === false 
         else return this.DefenseState === true
     }
-    playerAttackChoice() {
+    playerChoice() {
         if (player1.Health <= 0) {
             
             console.log('\no----(::::::::::>')
@@ -137,7 +137,7 @@ class Characters {
                     console.log('\nSweet, sweet, Destruction!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )
                     console.log('Hero items: ', this.Items.join(', '))
 
                 }
@@ -146,35 +146,35 @@ class Characters {
                     console.log('\nSpreading democracy!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), ) 
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), ) 
                 }
                 else if (choice === 'grenade' || choice === 'g') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[2])
                     console.log('\nHere comes the BOOM!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )  
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )  
                 }
                 else if (choice === 'laser strike' || choice === 'l') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[3])
                     console.log('\nZip, Zap, Zow, BITCH!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 }
                 else if (choice === 'precision strike' || choice === 'p') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[4])
                     console.log('\nWait for it..............BOOOOM!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 }
                 else if (choice === 'mortar' || choice === 'm') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5])
                     console.log('\nHail Mary!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 } 
                 //HEALING ITEMS
                 else if (choice === 'herbs' || choice === 'h') {
@@ -184,7 +184,7 @@ class Characters {
                     console.log(this.Items.join(', '))
                     //console.log('Hero', player1.getHealthBar()) 
                     rl.close()
-                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 } 
                 else if (choice === 'tonic' || choice === 't') {
                     this.Items.splice(this.Items.indexOf('Tonic'), 1)
@@ -193,7 +193,7 @@ class Characters {
                     console.log(this.Items.join(', '))
                     //            console.log('Hero', player1.getHealthBar())
                     rl.close()
-                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 } 
                 else if (choice === 'suluku\'s blessing' || choice === 's') {
                     this.Items.splice(this.Items.indexOf('Suluku\'s Blessing'), 1)
@@ -202,13 +202,13 @@ class Characters {
                     console.log(this.Items.join(', '))
                             // console.log('Hero', player1.getHealthBar())
                     rl.close()
-                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 }
                 else {
                     console.log('Enter a valid response please:\n', 'RPG\n', 'Airstrike\n', 'Grenade\n', 'Laser Strike\n', 'Precision Strike\n', 'Mortar\n')
                     rl.close()
-                    console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
-                    return this.playerAttackChoice()
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
+                    return this.playerChoice()
                 }
         })
         // let attacks = Object.entries(this.Attacks)
@@ -267,35 +267,35 @@ class Characters {
     //                     console.log('\nSpreading democracy!\n')
     //                     console.log('Boss', boss1.getHealthBar(), '\n')
     //                     rl.close()   
-    //                     console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), ) 
+    //                     console.log(boss1.bossAttackChoice(), this.playerChoice(), ) 
     //                 }
     //                 else if (attack === 'grenade' || attack === 'g') {
     //                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[2])
     //                     console.log('\nHere comes the BOOM!\n')
     //                     console.log('Boss', boss1.getHealthBar(), '\n')
     //                     rl.close()   
-    //                     console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )  
+    //                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )  
     //                 }
     //                 else if (attack === 'laser strike' || attack === 'l') {
     //                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[3])
     //                     console.log('\nZip, Zap, Zow, BITCH!\n')
     //                     console.log('Boss', boss1.getHealthBar(), '\n')
     //                     rl.close()   
-    //                     console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
+    //                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
     //                 }
     //                 else if (attack === 'precision strike' || attack === 'p') {
     //                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[4])
     //                     console.log('\nWait for it..............BOOOOM!\n')
     //                     console.log('Boss', boss1.getHealthBar(), '\n')
     //                     rl.close()   
-    //                     console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
+    //                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
     //                 }
     //                 else if (attack === 'mortar' || attack === 'm') {
     //                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5])
     //                     console.log('\nHail Mary!\n')
     //                     console.log('Boss', boss1.getHealthBar(), '\n')
     //                     rl.close()   
-    //                     console.log(boss1.bossAttackChoice(), this.playerAttackChoice(), )   
+    //                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
     //                 } 
     //                 else {
     //                     console.log('Enter a valid response please:\n', 'RPG\n', 'Airstrike\n', 'Grenade\n', 'Laser Strike\n', 'Precision Strike\n', 'Mortar\n')

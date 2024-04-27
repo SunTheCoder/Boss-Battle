@@ -49,7 +49,7 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
     //     return 'YOU HAVE EMERGED TRIUMPHANT, HERO!'
     // }
 
-    console.log(boss1.bossAttackChoice(), player1.playerAttackChoice(), )
+    console.log(boss1.bossAttackChoice(), player1.playerChoice(), )
     //console.log(player1.playerUseHealingItem())
     
     
