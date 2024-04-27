@@ -206,8 +206,7 @@ class Characters {
                 }
                 else {
                     console.log('Enter a valid response please:\n', 'RPG\n', 'Airstrike\n', 'Grenade\n', 'Laser Strike\n', 'Precision Strike\n', 'Mortar\n')
-                    rl.close()
-                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
+                    rl.close() 
                     return this.playerChoice()
                 }
         })
@@ -218,10 +217,10 @@ class Characters {
         return ''
     }
     
-
     playerDefense() {
 
     }
+
     // playerUseHealingItem() {
     //    for (let item of this.Items) {
     //    //console.log(this.Items)
@@ -305,6 +304,7 @@ class Characters {
     //         //DAMAGE ITEMS//
     //     })   
     // }
+
     playerUseDefenseItem() {
         for (let item of this.Items) {
             //console.log(this.Items)
@@ -338,6 +338,7 @@ class Characters {
                  }
              }   
     }
+
     playerUseBoostItem() {
         for (let item of this.Items) {
             //console.log(this.Items)
@@ -378,6 +379,7 @@ class Characters {
                  
         }   
     }
+
     bossAttackChoice() {
         let attacks = Object.entries(this.Attacks)
         let attack = Math.floor(Math.random() * Object.keys(this.Attacks).length)
@@ -402,12 +404,14 @@ class Characters {
         return ''
         
     }
+
     bossDefense() {
 
     }
     bossUseItem() {
 
     }
+
 }
 
     class Boss extends Characters {
