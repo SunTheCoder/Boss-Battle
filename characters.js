@@ -12,7 +12,6 @@ class Characters {
         this.DefenseState = defenseState
     }
     
-    //user input for max and min within class??
     //ATTRIBUTES
     getName() {
         return `Name: ${this.Name}`
@@ -30,14 +29,6 @@ class Characters {
         }
         return `Health:  ${arr.join('')}` 
     }
-    //OLD BAR CODE
-    // getDefenseBar() {
-    //     let arr = []
-    //     for (let i = 0; i <= this.Defense; i++) {
-    //         arr.push('|')
-    //     } 
-    //     return `Defense: ${arr.join('')}`
-    // }
     getDefenseBar(num) {
         let arr = []
         for (let i = 0; i <= num; i++) {
@@ -45,27 +36,10 @@ class Characters {
         } 
         return `Defense: ${arr.join('')}`
     }
-    getAttacks() {
-        //console.log(this.Attacks)
-        //return array with name and attack power. based on level the power will start at a certain num     
+    getAttacks() {   
         return `Attacks: ${Object.keys(this.Attacks).join(', ')}`
     }
-    // getItems() {
-        
-    //     let arr = []
-
-    //     let items1 = Object.keys(attributes.itemsTierOne)
-    //     let items2 = Object.keys(attributes.itemsTierTwo)
-    //     let items3 = Object.keys(attributes.itemsTierThree)
     
-    //     let item1 = items1[Math.floor(Math.random() * Object.keys(attributes.itemsTierOne).length)]
-    //     let item2 = items2[Math.floor(Math.random() * Object.keys(attributes.itemsTierTwo).length)]
-    //     let item3 = items3[Math.floor(Math.random() * Object.keys(attributes.itemsTierThree).length)]
-
-    //     arr.push(item1, item2, item3)
-        
-    //     return `Items:   ${arr.join(', ')}`
-    // }
     getItems() {
         
         let arr = []
@@ -87,12 +61,10 @@ class Characters {
     logStats() {
         console.log(this.getName())
         console.log(this.getType())
-        console.log(this.getLevel())
-        console.log('')
+        console.log(this.getLevel(), '\n')
         console.log(this.getHealthBar())
-        console.log(this.getDefenseBar(this.Defense))
-        console.log('')
-        console.log(this.getAttacks())
+        console.log(this.getDefenseBar(this.Defense), '\n')
+        console.log(this.Name, this.getAttacks())
         //console.log(this.getItems())
         return '';
     }
@@ -123,7 +95,11 @@ class Characters {
     
             return ''
         }
+        if (player1.Defense > 0) {
 
+            console.log('Hero', player1.getDefenseBar(this.Defense), '')
+        }
+        
         const readline = require('node:readline');
         const { stdin: input, stdout: output } = require('node:process');
 
@@ -135,9 +111,9 @@ class Characters {
                 if (choice === 'rpg' || choice === 'r') { 
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[0])
                     console.log('\nSweet, sweet, Destruction!\n')
-                    console.log('Boss', boss1.getHealthBar(), '\n')
+                    console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n')
                     rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )
+                    console.log(boss1.bossAttackChoice(), this.playerChoice())
                     console.log('Hero items: ', this.Items.join(', '))
 
                 }
@@ -176,7 +152,7 @@ class Characters {
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 } 
-                //HEALING ITEMS
+                //HEALING ITEMS//
                 else if (choice === 'herbs' || choice === 'h') {
                     this.Items.splice(this.Items.indexOf('Herbs'), 1)
                     player1.Health = player1.Health + 25
@@ -195,7 +171,7 @@ class Characters {
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 } 
-                else if (choice === 'suluku\'s blessing' || choice === 's') {
+                else if (choice === 'suluku\'s blessing' || choice === 'su') {
                     this.Items.splice(this.Items.indexOf('Suluku\'s Blessing'), 1)
                     player1.Health = player1.Health + 75
                     console.log('\nHero used Suluku\'s Blessing! Health +75!\n')
@@ -204,106 +180,67 @@ class Characters {
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 }
+                //DEFENSE ITEMS//
+                else if (choice === 'bark Shield' || choice === 'b') {
+                    this.Items.splice(this.Items.indexOf('Bark Shield'), 1)
+                    player1.Defense = player1.Defense + 25
+                    console.log('\nHero used Bark Shield! Defense +25!\n')
+                    console.log('Hero Attacks:', this.Items.join(', '))
+                    console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+
+                    //console.log('Hero', player1.getDefenseBar(25)) 
+                    rl.close()
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), ) 
+
+                } else if (choice === 'steel Shield' || choice === 'st') {
+                    this.Items.splice(this.Items.indexOf('Steel Shield'), 1)
+                    player1.Defense = player1.Defense + 50
+                    console.log('\nHero used Steel Shield! Defense +50!\n')
+                    console.log('Hero Attacks:', this.Items.join(', '))
+                    console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+
+                    //console.log('Hero', player1.getDefenseBar(50))
+                    rl.close()
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
+
+                } else if (choice === 'immovable Object' || choice === 'i') {
+                    this.Items.splice(this.Items.indexOf('Immovable Object'), 1)
+                    player1.Defense = player1.Defense + 75
+                    console.log('\nHero used Immovable Object! Defense +75!\n')
+                    console.log('Hero Attacks:', this.Items.join(', '))
+                    console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+
+                    //console.log('Hero', player1.getDefenseBar(75))
+                    rl.close()
+                    console.log(boss1.bossAttackChoice(), this.playerChoice())   
+                    
+                }
+                //BOOST ITEMS//
+                else if (choice === 'ancestral Boon' || choice === 'an') {
+                    this.Items.splice(this.Items.indexOf('Ancestral Boon'), 1)
+                    console.log('Hero used Ancestral Boon! Defense Boost!\n')
+                    if (this.Defense === 0) this.Defense = 50
+                    this.Defense = this.Defense * 2
+                    console.log('Hero Attacks:', this.Items.join(', '))
+                    console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+                    rl.close()
+                    console.log(boss1.bossAttackChoice(), this.playerChoice())   
+                          
+                    }
                 else {
-                    console.log('Enter a valid response please:\n', 'RPG\n', 'Airstrike\n', 'Grenade\n', 'Laser Strike\n', 'Precision Strike\n', 'Mortar\n')
+                    console.log('\nEnter a valid response please:\n', '\n RPG\n', 'Airstrike\n', 'Grenade\n', 
+                                'Laser Strike\n', 'Precision Strike\n', 'Mortar\n', 'Herbs\n', 'Tonic\n', 
+                                'Suluku\'s Blessing\n', 'Bark Shield\n', 'Steel Shield\n', 'Immovable Object\n')
                     rl.close() 
                     return this.playerChoice()
                 }
         })
-        // let attacks = Object.entries(this.Attacks)
-        // let attack = Math.floor(Math.random() * Object.keys(this.Attacks).length)
-        // console.log(`Player Attack: ${attacks[attack][0]}`)
-        // return boss1.Health = boss1.Health - attacks[attack][1]
         return ''
     }
     
     playerDefense() {
 
     }
-
-    // playerUseHealingItem() {
-    //    for (let item of this.Items) {
-    //    //console.log(this.Items)
-    //         //HEALING ITEMS//
-    //         if (item === 'Herbs') {
-    //             this.Items.splice(this.Items.indexOf(item), 1)
-    //             player1.Health = player1.Health + 25
-    //             console.log('Hero used Herbs! Health +25!')
-    //             console.log('Hero', player1.getHealthBar()) 
-    //             return '' //FIX RETURN
-    //         } else if (item === 'Tonic') {
-    //             this.Items.splice(this.Items.indexOf(item), 1)
-    //             player1.Health = player1.Health + 50
-    //             console.log('Hero used Tonic! Health +50!')
-    //             console.log('Hero', player1.getHealthBar())
-    //             return '' //FIX RETURN
-    //         } else if (item === 'Suluku\'s Blessing') {
-    //             this.Items.splice(this.Items.indexOf(item), 1)
-    //             player1.Health = player1.Health + 75
-    //             console.log('Hero used Suluku\'s Blessing! Health +75!')
-    //             console.log('Hero', player1.getHealthBar())
-    //             return '' //FIX RETURN
-    //         }
-    //         const readline = require('node:readline');
-    //         const { stdin: input, stdout: output } = require('node:process');
-    
-    //         const rl = readline.createInterface({ input, output });
-          
-    //         rl.question('\nChoose your item from the Hero\'s \"Items\" list!\n', (item) => {
-    //                 item = item.toLowerCase();
-    //                 //EXPLOSIVE ATTACKS//
-    //                 if (item === 'herbs' || item === 'h') { 
-    //                     this.Items.splice(this.Items.indexOf(item), 1)
-    //                     this.Health = this.Health + 25
-    //                     console.log('Some good ol\' healing!')
-    //                     console.log('Hero used Herbs! Health +25!')
-    //                     rl.close()   
-    //                     console.log('Hero items: ', this.Items.join(', '))
-    
-    //                 }
-    //                 else if (attack === 'airstrike' || attack === 'a') {
-    //                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[1])
-    //                     console.log('\nSpreading democracy!\n')
-    //                     console.log('Boss', boss1.getHealthBar(), '\n')
-    //                     rl.close()   
-    //                     console.log(boss1.bossAttackChoice(), this.playerChoice(), ) 
-    //                 }
-    //                 else if (attack === 'grenade' || attack === 'g') {
-    //                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[2])
-    //                     console.log('\nHere comes the BOOM!\n')
-    //                     console.log('Boss', boss1.getHealthBar(), '\n')
-    //                     rl.close()   
-    //                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )  
-    //                 }
-    //                 else if (attack === 'laser strike' || attack === 'l') {
-    //                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[3])
-    //                     console.log('\nZip, Zap, Zow, BITCH!\n')
-    //                     console.log('Boss', boss1.getHealthBar(), '\n')
-    //                     rl.close()   
-    //                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
-    //                 }
-    //                 else if (attack === 'precision strike' || attack === 'p') {
-    //                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[4])
-    //                     console.log('\nWait for it..............BOOOOM!\n')
-    //                     console.log('Boss', boss1.getHealthBar(), '\n')
-    //                     rl.close()   
-    //                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
-    //                 }
-    //                 else if (attack === 'mortar' || attack === 'm') {
-    //                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5])
-    //                     console.log('\nHail Mary!\n')
-    //                     console.log('Boss', boss1.getHealthBar(), '\n')
-    //                     rl.close()   
-    //                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
-    //                 } 
-    //                 else {
-    //                     console.log('Enter a valid response please:\n', 'RPG\n', 'Airstrike\n', 'Grenade\n', 'Laser Strike\n', 'Precision Strike\n', 'Mortar\n')
-    //                     rl.close()
-    //                     return this.playerUseHealingItem()
-    //                 }
-    //         //DAMAGE ITEMS//
-    //     })   
-    // }
 
     playerUseDefenseItem() {
         for (let item of this.Items) {
@@ -374,9 +311,7 @@ class Characters {
                 //      console.log('Hero', player1.getDefenseBar(75))
                 //      console.log('')
 
-                //      return player1.DefenseState = true
-
-                 
+                //      return player1.DefenseState = true   
         }   
     }
 
@@ -393,7 +328,11 @@ class Characters {
                 return ''
                 
             }
-            player1.Health = player1.Health - (attacks[attack][1] - player1.Defense)
+            //defense with attack
+            //player1.Health = player1.Health - (attacks[attack][1] - player1.Defense)
+            player1.Defense = player1.Defense - attacks[attack][1]
+            player1.Health = player1.Health + player1.Defense
+            player1.Defense = 0
             console.log('Hero', player1.getHealthBar())
             return ''
             

@@ -1,4 +1,3 @@
-const { boss1 } = require('./characters')
 const { player1 } = require('./characters')
 const { playGame } = require('./playgame')
 
