@@ -1,5 +1,6 @@
 const { attributes } = require(`./attributes`)
 
+
 class Characters {
     constructor (name = '', type = '', level = null, health = [], defense = 0, attacks, items, defenseState = false) {
         this.Name = name;
@@ -77,6 +78,7 @@ class Characters {
         if (this.Defense === 0) return this.DefenseState === false 
         else return this.DefenseState === true
     }
+    
     playerChoice() {
         if (player1.Health <= 0) {
             
@@ -115,7 +117,6 @@ class Characters {
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice())
                     console.log('Hero items: ', this.Items.join(', '))
-
                 }
                 else if (choice === 'airstrike' || choice === 'a') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[1])
@@ -181,7 +182,7 @@ class Characters {
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 }
                 //DEFENSE ITEMS//
-                else if (choice === 'bark Shield' || choice === 'b') {
+                else if (choice === 'bark shield' || choice === 'b') {
                     this.Items.splice(this.Items.indexOf('Bark Shield'), 1)
                     player1.Defense = player1.Defense + 25
                     console.log('\nHero used Bark Shield! Defense +25!\n')
@@ -192,7 +193,7 @@ class Characters {
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), ) 
 
-                } else if (choice === 'steel Shield' || choice === 'st') {
+                } else if (choice === 'steel shield' || choice === 'st') {
                     this.Items.splice(this.Items.indexOf('Steel Shield'), 1)
                     player1.Defense = player1.Defense + 50
                     console.log('\nHero used Steel Shield! Defense +50!\n')
@@ -203,7 +204,7 @@ class Characters {
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
 
-                } else if (choice === 'immovable Object' || choice === 'i') {
+                } else if (choice === 'immovable object' || choice === 'i') {
                     this.Items.splice(this.Items.indexOf('Immovable Object'), 1)
                     player1.Defense = player1.Defense + 75
                     console.log('\nHero used Immovable Object! Defense +75!\n')
@@ -212,11 +213,10 @@ class Characters {
 
                     //console.log('Hero', player1.getDefenseBar(75))
                     rl.close()
-                    console.log(boss1.bossAttackChoice(), this.playerChoice())   
-                    
+                    console.log(boss1.bossAttackChoice(), this.playerChoice())          
                 }
                 //BOOST ITEMS//
-                else if (choice === 'ancestral Boon' || choice === 'an') {
+                else if (choice === 'ancestral boon' || choice === 'an') {
                     this.Items.splice(this.Items.indexOf('Ancestral Boon'), 1)
                     console.log('Hero used Ancestral Boon! Defense Boost!\n')
                     if (this.Defense === 0) this.Defense = 50
@@ -224,13 +224,23 @@ class Characters {
                     console.log('Hero Attacks:', this.Items.join(', '))
                     console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
                     rl.close()
-                    console.log(boss1.bossAttackChoice(), this.playerChoice())   
-                          
-                    }
+                    console.log(boss1.bossAttackChoice(), this.playerChoice())             
+                }
+                //ATTACK ITEMS//
+                else if (choice === 'shriveled head' || choice === 'sh') {
+                    this.Items.splice(this.Items.indexOf('Shriveled Head'), 1)
+                    console.log('Hero used Shriveled Head! Boss takes damage!')
+                    boss1.Health = boss1.Health - (boss1.Health / 5)
+                    console.log('Hero Attacks:', this.Items.join(', '))
+                    console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+                    rl.close()
+                    console.log(boss1.bossAttackChoice(), this.playerChoice()) 
+                }
                 else {
                     console.log('\nEnter a valid response please:\n', '\n RPG\n', 'Airstrike\n', 'Grenade\n', 
                                 'Laser Strike\n', 'Precision Strike\n', 'Mortar\n', 'Herbs\n', 'Tonic\n', 
-                                'Suluku\'s Blessing\n', 'Bark Shield\n', 'Steel Shield\n', 'Immovable Object\n')
+                                'Suluku\'s Blessing\n', 'Bark Shield\n', 'Steel Shield\n', 'Immovable Object\n',
+                                'Ancestral Boon\n')
                     rl.close() 
                     return this.playerChoice()
                 }
@@ -252,7 +262,6 @@ class Characters {
                      console.log('Hero used Bark Shield! Defense +25!')
                      console.log('Hero', player1.getDefenseBar(25)) 
                      console.log('')
-
                      return player1.DefenseState = true
                      
                  } else if (item === 'Steel Shield') {
@@ -269,7 +278,6 @@ class Characters {
                      console.log('Hero used Immovable Object! Defense +75!')
                      console.log('Hero', player1.getDefenseBar(75))
                      console.log('')
-
                      return player1.DefenseState = true
 
                  }

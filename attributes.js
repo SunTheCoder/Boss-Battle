@@ -14,7 +14,7 @@ const attributes = {
     
     itemsTierOne:   {'Herbs': 25,              'Passionfruit': 25,  'Bark Shield': 25,      'Herbal Salve': null, 'Quickness Potion': null, 'Smoke Bomb': null},
     itemsTierTwo:   {'Tonic': 50,              'Mana Potion': 50,   'Steel Shield': 50,     'Holy Water': null,   'Alchemist Vial': null,   'Shriveled Head': null},
-    itemsTierThree: {'Suluku\'s Blessing': 75, 'Mystics Water': 25, 'Immovable Object': 75, 'Panacea': null,      'Ancestral Boon': null,   'Death': null}
+    itemsTierThree: {'Suluku\'s Blessing': 75, 'Mystics Water': 75, 'Immovable Object': 75, 'Panacea': null,      'Ancestral Boon': null,   'Death': null}
     
     }
 
