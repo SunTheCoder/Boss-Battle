@@ -279,3 +279,26 @@
         // let attack = Math.floor(Math.random() * Object.keys(this.Attacks).length)
         // console.log(`Player Attack: ${attacks[attack][0]}`)
         // return boss1.Health = boss1.Health - attacks[attack][1]
+
+const defenseScript = (item) => {
+        if (this.checkInventory('Immovable Object')) {
+          this.defItemUse('Immovable Object')
+
+      //console.log('Hero', player1.getDefenseBar(75))
+          rl.close()
+          console.log(boss1.bossAttackChoice(), this.playerChoice())  
+      } 
+      else  {
+          console.log(`Immovable Object is not in Hero\'s Inventory! Check the Items list.\n`, this.Items.join(', '), '\n')
+          rl.close()
+          console.log(this.playerChoice()) 
+          }
+        }
+
+function defItemUse(item) {
+      this.Items.splice(this.Items.indexOf(item), 1)
+      this.Defense = this.Defense + 75
+      console.log('\nHero used Immovable Object! Defense +75!\n')
+      console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
+      console.log('Hero Items:', this.Items.join(', '), '\n')
+}

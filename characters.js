@@ -45,13 +45,13 @@ class Characters {
         
         let arr = []
 
-        let items1 = Object.keys(attributes.itemsTierOne)
-        let items2 = Object.keys(attributes.itemsTierTwo)
-        let items3 = Object.keys(attributes.itemsTierThree)
+        let items1 = Object.entries(attributes.itemsTierOne)
+        let items2 = Object.entries(attributes.itemsTierTwo)
+        let items3 = Object.entries(attributes.itemsTierThree)
     
-        let item1 = items1[Math.floor(Math.random() * Object.keys(attributes.itemsTierOne).length)]
-        let item2 = items2[Math.floor(Math.random() * Object.keys(attributes.itemsTierTwo).length)]
-        let item3 = items3[Math.floor(Math.random() * Object.keys(attributes.itemsTierThree).length)]
+        let item1 = items1[Math.floor(Math.random() * Object.entries(attributes.itemsTierOne).length)]
+        let item2 = items2[Math.floor(Math.random() * Object.entries(attributes.itemsTierTwo).length)]
+        let item3 = items3[Math.floor(Math.random() * Object.entries(attributes.itemsTierThree).length)]
 
         arr.push(item1, item2, item3)
 
@@ -78,7 +78,48 @@ class Characters {
         if (this.Defense === 0) return this.DefenseState === false 
         else return this.DefenseState === true
     }
-    
+    // checkInventory(item) {
+    //     if (!(this.Items.includes(item))) {   
+    //         return false
+    //     }
+    //     return true
+    // }
+    checkInventory(item) {
+        for (let el of this.Items) {
+            if (el.includes(item)) {   
+            return true
+            }
+        }
+        return false
+    }
+    //PLAYER CHOICE//
+    defenseScript(item) {
+        if (this.checkInventory(item)) {
+          this.Items.splice(this.Items.indexOf(item), 1)
+          player1.Defense = player1.Defense + 75
+          console.log('\nHero used Immovable Object! Defense +75!\n')
+          console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
+          console.log('Hero Items:', this.Items.join(', '), '\n')
+
+      //console.log('Hero', player1.getDefenseBar(75))
+        //   rl.close()
+          //console.log(boss1.bossAttackChoice(), this.playerChoice())  
+      } 
+      else  {
+          console.log(`Immovable Object is not in Hero\'s Inventory! Check the Items list.\n`, this.Items.join(', '), '\n')
+        //   rl.close()
+          //console.log(boss1.bossAttackChoice(), this.playerChoice()) 
+          }
+        }
+    defItemUse(item) {
+            let defPwr = this.Items.filter(el => el.includes(item))[0][1]
+            this.Defense = this.Defense + defPwr
+            
+            console.log(`\nHero used ${item}! Defense + ${defPwr}!\n`)
+            this.Items.splice(this.Items.indexOf(item), 1)
+            console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
+            console.log('Hero Items:', this.Items.join(', '), '\n')
+    }
     playerChoice() {
         if (player1.Health <= 0) {
             
@@ -203,17 +244,37 @@ class Characters {
                     //console.log('Hero', player1.getDefenseBar(50))
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
+                    
+                } else if (choice === 'immovable object' || choice === 'i') { //<-----DEF ITEM LOGIC TO BE USED ON ALL W/ HELPERS
+                    let item = 'Immovable Object'
+                    if (this.checkInventory(item)) {
+                        this.defItemUse(item)
+                        rl.close()
+                        console.log(boss1.bossAttackChoice(), this.playerChoice())  
+                    } else {
+                        console.log(`${item} is not in Hero\'s Inventory! Check the Items list.\n`, this.Items.join(', '), '\n')
+                        rl.close()
+                        console.log(this.playerChoice()) 
+                        }
+                      
+                    // if (this.checkInventory('Immovable Object')) {
+                    //     this.Items.splice(this.Items.indexOf('Immovable Object'), 1)
+                    //     player1.Defense = player1.Defense + 75
+                    //     console.log('\nHero used Immovable Object! Defense +75!\n')
+                    //     console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
+                    //     console.log('Hero Items:', this.Items.join(', '), '\n')
 
-                } else if (choice === 'immovable object' || choice === 'i') {
-                    this.Items.splice(this.Items.indexOf('Immovable Object'), 1)
-                    player1.Defense = player1.Defense + 75
-                    console.log('\nHero used Immovable Object! Defense +75!\n')
-                    console.log('Hero Attacks:', this.Items.join(', '))
-                    console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+                    // //console.log('Hero', player1.getDefenseBar(75))
+                    //     rl.close()
+                    //     console.log(boss1.bossAttackChoice(), this.playerChoice())  
+                    // } 
+                    // else  {
+                    //     console.log(`Immovable Object is not in Hero\'s Inventory! Check the Items list.\n`, this.Items.join(', '), '\n')
+                    //     rl.close()
+                    //     console.log(boss1.bossAttackChoice(), this.playerChoice()) 
+                    //     }
 
-                    //console.log('Hero', player1.getDefenseBar(75))
-                    rl.close()
-                    console.log(boss1.bossAttackChoice(), this.playerChoice())          
+
                 }
                 //BOOST ITEMS//
                 else if (choice === 'ancestral boon' || choice === 'an') {
@@ -221,18 +282,18 @@ class Characters {
                     console.log('Hero used Ancestral Boon! Defense Boost!\n')
                     if (this.Defense === 0) this.Defense = 50
                     this.Defense = this.Defense * 2
-                    console.log('Hero Attacks:', this.Items.join(', '))
-                    console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+                    console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
+                    console.log('Hero Items:', this.Items.join(', '), '\n')
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice())             
                 }
                 //ATTACK ITEMS//
                 else if (choice === 'shriveled head' || choice === 'sh') {
                     this.Items.splice(this.Items.indexOf('Shriveled Head'), 1)
-                    console.log('Hero used Shriveled Head! Boss takes damage!')
+                    console.log('Hero used Shriveled Head! Boss takes damage!\n')
                     boss1.Health = boss1.Health - (boss1.Health / 5)
-                    console.log('Hero Attacks:', this.Items.join(', '))
-                    console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+                    console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
+                    console.log('Hero Items:', this.Items.join(', '), '\n')
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice()) 
                 }
@@ -240,7 +301,7 @@ class Characters {
                     console.log('\nEnter a valid response please:\n', '\n RPG\n', 'Airstrike\n', 'Grenade\n', 
                                 'Laser Strike\n', 'Precision Strike\n', 'Mortar\n', 'Herbs\n', 'Tonic\n', 
                                 'Suluku\'s Blessing\n', 'Bark Shield\n', 'Steel Shield\n', 'Immovable Object\n',
-                                'Ancestral Boon\n')
+                                'Ancestral Boon\n', 'Shriveled Head\n')
                     rl.close() 
                     return this.playerChoice()
                 }
@@ -322,7 +383,7 @@ class Characters {
                 //      return player1.DefenseState = true   
         }   
     }
-
+    //BOSS LOGIC//
     bossAttackChoice() {
         let attacks = Object.entries(this.Attacks)
         let attack = Math.floor(Math.random() * Object.keys(this.Attacks).length)

@@ -1,6 +1,8 @@
 const { boss1 } = require('./characters')
 const { player1 } = require('./characters')
+
 //set timeout story prompt!!
+
 const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
     if (count === undefined) {
         console.log('\no----(::::::::::>', '\nYOUR EPIC BOSS BATTLE BEGINS!', '\no----(::::::::::>\n')
