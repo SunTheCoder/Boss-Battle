@@ -28,6 +28,7 @@ class Characters {
                         '-If the player needs to see the "Boss\'" current stats, type "Bstats"\n\n',
 
                         'ENJOY! and THANK YOU! for playing!\n\n',
+                        'Game Creator: Bobby "Sun" English Jr. -April 2024\n\n',
                         'o----(::::::::::>')
 
     }
@@ -193,7 +194,8 @@ class Characters {
                 }
                 //EXPLOSIVE ATTACKS//
                 else if (choice === 'rpg' || choice === 'rp') {  //<-----MAIN FUNCTION LOGIC TO COPY FOR ATTACKS
-                    boss1.Health = boss1.Health - (Object.values(player1.Attacks)[0])
+                    boss1.Health = boss1.Health - (Object.values(this.Attacks)[0])
+                    this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[0])
                     console.log('\nSweet, sweet, Destruction!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
                     rl.close()   
@@ -222,13 +224,17 @@ class Characters {
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )  
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
                 }
                 else if (choice === 'laser strike' || choice === 'la') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[3])
                     console.log('\nZip, Zap, Zow, BITCH!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), ) 
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')  
                 }
                 else if (choice === 'precision strike' || choice === 'pr') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[4])
@@ -236,6 +242,8 @@ class Characters {
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
                 }
                 else if (choice === 'mortar' || choice === 'mo') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5])
@@ -243,6 +251,8 @@ class Characters {
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
                 } 
                 //HEALING ITEMS//
                 else if (choice === 'herbs' || choice === 'he') {
@@ -350,8 +360,8 @@ class Characters {
                     console.log('Hero used Ancestral Boon! Defense Boost!\n')
                     if (this.Defense === 0) this.Defense = 50
                     this.Defense = this.Defense * 2
-                    console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
-                    console.log('Hero Items:', this.Items.join(', '), '\n')
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice())             
                 }
@@ -359,9 +369,9 @@ class Characters {
                 else if (choice === 'shriveled head' || choice === 'sh') { //<------MAIN ATK ITEM FUNC TO BE COPIED/TEST
                     this.Items.splice(this.Items.indexOf('Shriveled Head'), 1)
                     console.log('Hero used Shriveled Head! Boss takes damage!\n')
-                    boss1.Health = boss1.Health - (boss1.Health / 5)
-                    console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
-                    console.log('Hero Items:', this.Items.join(', '), '\n')
+                    boss1.Health = boss1.Health - (boss1.Health / 4)
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice()) 
                 }
@@ -369,8 +379,8 @@ class Characters {
                     this.Items.splice(this.Items.indexOf('Death'), 1)
                     console.log('Hero used Shriveled Head! Boss takes damage!\n')
                     boss1.Health = boss1.Health - (boss1.Health / 3)
-                    console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
-                    console.log('Hero Items:', this.Items.join(', '), '\n')
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice()) 
                 }
@@ -464,7 +474,8 @@ class Characters {
     bossAttackChoice() {
         let attacks = Object.entries(this.Attacks)
         let attack = Math.floor(Math.random() * Object.keys(this.Attacks).length)
-        console.log(`Boss Attack:  ${attacks[attack][0]}\n`)
+        console.log(`Boss Attack:  ${attacks[attack][0]} depletes Hero's health by ${attacks[attack][1]} damage!\n`)
+        console.log(this.Name, this.getHealthBar(), '\n')
         if (player1.Defense !== 0) {
             //console.log('YOOOOOOOOOOOOOOOO', player1.defenseState)
             let res = player1.Defense - attacks[attack][1]
@@ -503,8 +514,8 @@ class Characters {
 }
 
     class Boss extends Characters {
-        constructor(name, type, level, health, defense, attacks, items, defenseState, atkPwr){
-            super(name, type, level, health, defense, attacks, items, defenseState, atkPwr)
+        constructor(name, type, level, health, defense, attacks, items, defenseState){
+            super(name, type, level, health, defense, attacks, items, defenseState)
             
         }
     }
@@ -515,9 +526,13 @@ class Characters {
         }
     }
     
-    const boss1 = new Boss('Fenrir', 'Fire', 8, 200, 25, attributes.fireAttacks, false, null, 100)
+    const boss1 = new Boss('Fenrir', 'Fire', 8, 200, 25, attributes.fireAttacks)
+
+    //fenrir: 'Fenrir', 'Fire', 8, 200, 25, attributes.fireAttacks, false, null, 100
     
-    const player1 = new Player('Hero', 'Explosive', 7, 85, 0, attributes.explosiveAttacks, false, null, 100)
+    const player1 = new Player('Hero', 'Explosive', 7, 100, 0, attributes.explosiveAttacks, false, null, 100)
+
+    //player1: 'Hero', 'Explosive', 7, 85, 0, attributes.explosiveAttacks, false, null, 100
 
 module.exports = {
     Characters,
