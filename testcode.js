@@ -49,20 +49,20 @@
     ///IF READLINE === "CERTAIN LEVEL" CONSTRUCT BOSS1 WITH X ATTRIBUTES/PARAMETERS
 
 
-    const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
-      if (count === undefined) {
-          console.log('o----(::::::::::>')
-          console.log('YOUR EPIC BOSS BATTLE BEGINS!')
-          console.log('o----(::::::::::>')
-          console.log('')
-          console.log(boss1.logStats())
-          //console.log('Boss items:', boss1.Items.join(', '))
-          console.log('')
-          console.log(player1.logStats())
-          console.log('Hero items:', player1.Items.join(', '))
-          console.log('')
+    // const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
+    //   if (count === undefined) {
+    //       console.log('o----(::::::::::>')
+    //       console.log('YOUR EPIC BOSS BATTLE BEGINS!')
+    //       console.log('o----(::::::::::>')
+    //       console.log('')
+    //       console.log(boss1.logStats())
+    //       //console.log('Boss items:', boss1.Items.join(', '))
+    //       console.log('')
+    //       console.log(player1.logStats())
+    //       console.log('Hero items:', player1.Items.join(', '))
+    //       console.log('')
           
-      }
+      // }
       
       // if (player1.Health <= 0) {
       //     rl.close()
@@ -73,18 +73,18 @@
           
       //     return 'YOU LOSE!'
       // }
-      if (player1.Health <= 40) {
-          player1.playerUseHealingItem()
-          //console.log(player1.Items)
-      }
-      if (player1.Health <= 75) {
+      // if (player1.Health <= 40) {
+      //     player1.playerUseHealingItem()
+      //     //console.log(player1.Items)
+      // }
+      // if (player1.Health <= 75) {
           
-          player1.playerUseDefenseItem()
-          //console.log(player1.Items)
-      }
-      if (player1.Health === Math.floor(Math.random() * player1.Health) || player1.Health <= 25) {
-          player1.playerUseBoostItem()
-      }
+      //     player1.playerUseDefenseItem()
+      //     //console.log(player1.Items)
+      // }
+      // if (player1.Health === Math.floor(Math.random() * player1.Health) || player1.Health <= 25) {
+      //     player1.playerUseBoostItem()
+      // }
       // if (boss1.Health <= 0) {
       //     rl.close()
       //     console.log('o----(::::::::::>')
@@ -95,7 +95,7 @@
       //     return 'YOU HAVE EMERGED TRIUMPHANT, HERO!'
       // }
   
-      console.log(boss1.bossAttackChoice(), player1.playerChoice(), )
+      // console.log(boss1.bossAttackChoice(), player1.playerChoice(), )
       //console.log(player1.playerUseHealingItem())
       
       
@@ -118,9 +118,9 @@
   //     // console.log('Hero items:', player1.Items.join(', '))
   //     // console.log('')
       
-      return
+  //     return
   
-  }
+  // }
   
   // const playTurn = () => {
               
@@ -280,25 +280,38 @@
         // console.log(`Player Attack: ${attacks[attack][0]}`)
         // return boss1.Health = boss1.Health - attacks[attack][1]
 
-const defenseScript = (item) => {
-        if (this.checkInventory('Immovable Object')) {
-          this.defItemUse('Immovable Object')
+// const defenseScript = (item) => {
+//         if (this.checkInventory('Immovable Object')) {
+//           this.defItemUse('Immovable Object')
 
-      //console.log('Hero', player1.getDefenseBar(75))
-          rl.close()
-          console.log(boss1.bossAttackChoice(), this.playerChoice())  
-      } 
-      else  {
-          console.log(`Immovable Object is not in Hero\'s Inventory! Check the Items list.\n`, this.Items.join(', '), '\n')
-          rl.close()
-          console.log(this.playerChoice()) 
-          }
-        }
+//       //console.log('Hero', player1.getDefenseBar(75))
+//           rl.close()
+//           console.log(boss1.bossAttackChoice(), this.playerChoice())  
+//       } 
+//       else  {
+//           console.log(`Immovable Object is not in Hero\'s Inventory! Check the Items list.\n`, this.Items.join(', '), '\n')
+//           rl.close()
+//           console.log(this.playerChoice()) 
+//           }
+//         }
 
-function defItemUse(item) {
-      this.Items.splice(this.Items.indexOf(item), 1)
-      this.Defense = this.Defense + 75
-      console.log('\nHero used Immovable Object! Defense +75!\n')
-      console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
-      console.log('Hero Items:', this.Items.join(', '), '\n')
+// function defItemUse(item) {
+//       this.Items.splice(this.Items.indexOf(item), 1)
+//       this.Defense = this.Defense + 75
+//       console.log('\nHero used Immovable Object! Defense +75!\n')
+//       console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
+//       console.log('Hero Items:', this.Items.join(', '), '\n')
+// }
+
+function editListString(str) {
+  let itemList = []
+  let strArr = str.split('')
+  for (let letter of strArr) {
+      if (letter === ",") itemList.push('+')
+      else itemList.push(letter)
+  }
+  return itemList.join('')
+
 }
+
+console.log(editListString('I love, rock and r,oll')) //=> I love+ rock and r+oll

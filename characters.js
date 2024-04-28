@@ -38,9 +38,8 @@ class Characters {
         return `Defense: ${arr.join('')}`
     }
     getAttacks() {   
-        return `Attacks:\n\n  ${Object.keys(this.Attacks).join(', ')}`
+        return `Attacks:\n\n  ${Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |')}`
     }
-    
     getItems() {
         
         let arr = []
@@ -69,10 +68,20 @@ class Characters {
         //console.log(this.getItems())
         return ''
     }
+    editListString(str) {
+        
+        let itemList = []
+        let strArr = str.split('')
+        for (let letter of strArr) {
+            if (letter === ",") itemList.push(' +')
+            else itemList.push(letter)
+        }
+        return itemList.join('')
+
+    }
     //BATTLE
     gameStartItems() {
         // player1.getItems()
-
     }
     checkDefense() {
         if (this.Defense === 0) return this.DefenseState === false 
@@ -112,7 +121,7 @@ class Characters {
           }
         }
     defItemUse(item) {
-            let defPwr = this.Items.filter(el => el.includes(item))[0][1]
+            let defPwr = this.Items.filter(el => el.includes(item))[0][1][0]
             this.Defense = this.Defense + defPwr
             
             console.log(`\nHero used ${item}! Defense + ${defPwr}!\n`)
@@ -157,16 +166,23 @@ class Characters {
                     console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice())
-                    console.log('Hero Items:\n', '\n', this.Items.map(item => item[0] + ': ' + item[1]).join(', '))
-                    console.log('\nHero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => item[0] + ': ' + item[1]).join(', '))
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')))
 
                 }
                 else if (choice === 'airstrike' || choice === 'a') {
+                    // boss1.Health = boss1.Health - (Object.values(player1.Attacks)[1])
+                    // console.log('\nSpreading democracy!\n')
+                    // console.log('Boss', boss1.getHealthBar(), '\n')
+                    // rl.close()   
+                    // console.log(boss1.bossAttackChoice(), this.playerChoice(), ) 
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[1])
-                    console.log('\nSpreading democracy!\n')
-                    console.log('Boss', boss1.getHealthBar(), '\n')
+                    console.log('\nSweet, sweet, Destruction!\n')
+                    console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
                     rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerChoice(), ) 
+                    console.log(boss1.bossAttackChoice(), this.playerChoice())
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')))
                 }
                 else if (choice === 'grenade' || choice === 'g') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[2])
@@ -198,50 +214,67 @@ class Characters {
                 } 
                 //HEALING ITEMS//
                 else if (choice === 'herbs' || choice === 'h') {
-                    this.Items.splice(this.Items.indexOf('Herbs'), 1)
+                    //this.Items.splice(this.Items.indexOf('Herbs'), 1)
+                    this.Items = this.Items.filter(el => !el.includes('Herbs'))
+
                     player1.Health = player1.Health + 25
                     console.log('\nHero used Herbs! Health +25!\n')
-                    console.log(this.Items.join(', '))
+                    //console.log(this.Items.join(', '))
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
                     //console.log('Hero', player1.getHealthBar()) 
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 } 
-                else if (choice === 'tonic' || choice === 't') {
-                    this.Items.splice(this.Items.indexOf('Tonic'), 1)
+                else if (choice === 'tonic' || choice === 't') { //<----MAIN UPDATED HEALING ITEM FUNC
+                    //this.Items.splice(this.Items.indexOf('Tonic'), 1)
+                    this.Items = this.Items.filter(el => !el.includes('Tonic'))
                     player1.Health = player1.Health + 50
                     console.log('\nHero used Tonic! Health +50!\n')
-                    console.log(this.Items.join(', '))
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
                     //            console.log('Hero', player1.getHealthBar())
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 } 
                 else if (choice === 'suluku\'s blessing' || choice === 'su') {
-                    this.Items.splice(this.Items.indexOf('Suluku\'s Blessing'), 1)
+                    //this.Items.splice(this.Items.indexOf('Suluku\'s Blessing'), 1)
+                    this.Items = this.Items.filter(el => !el.includes('Suluku\'s Blessing'))
+
                     player1.Health = player1.Health + 75
                     console.log('\nHero used Suluku\'s Blessing! Health +75!\n')
-                    console.log(this.Items.join(', '))
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
+                    //console.log(this.Items.join(', '))
                             // console.log('Hero', player1.getHealthBar())
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 }
                 //DEFENSE ITEMS//
                 else if (choice === 'bark shield' || choice === 'b') {
-                    this.Items.splice(this.Items.indexOf('Bark Shield'), 1)
+                    //this.Items.splice(this.Items.indexOf('Bark Shield'), 1)
+                    this.Items = this.Items.filter(el => !el.includes('Bark Shield'))
+
                     player1.Defense = player1.Defense + 25
                     console.log('\nHero used Bark Shield! Defense +25!\n')
-                    console.log('Hero Attacks:', this.Items.join(', '))
-                    console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+                    // console.log('Hero Attacks:', this.Items.join(', '))
+                    // console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
 
                     //console.log('Hero', player1.getDefenseBar(25)) 
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), ) 
 
                 } else if (choice === 'steel shield' || choice === 'st') {
-                    this.Items.splice(this.Items.indexOf('Steel Shield'), 1)
+                    //this.Items.splice(this.Items.indexOf('Steel Shield'), 1)
+                    this.Items = this.Items.filter(el => !el.includes('Steel Shield'))
                     player1.Defense = player1.Defense + 50
                     console.log('\nHero used Steel Shield! Defense +50!\n')
-                    console.log('Hero Attacks:', this.Items.join(', '))
-                    console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+                    // console.log('Hero Attacks:', this.Items.join(', '))
+                    // console.log('Hero Items:', Object.keys(this.Attacks).join(', '), '\n')
+                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
 
                     //console.log('Hero', player1.getDefenseBar(50))
                     rl.close()
@@ -249,12 +282,13 @@ class Characters {
                     
                 } else if (choice === 'immovable object' || choice === 'i') { //<-----DEF ITEM LOGIC TO BE USED ON ALL W/ HELPERS
                     let item = 'Immovable Object'
+                    
                     if (this.checkInventory(item)) {
                         this.defItemUse(item)
                         rl.close()
                         console.log(boss1.bossAttackChoice(), this.playerChoice())  
                     } else {
-                        console.log(`${item} is not in Hero\'s Inventory! Check the Items list.\n`, this.Items.join(', '), '\n')
+                        console.log(`${item} is not in Hero\'s Inventory! Check the Items list.\n`, this.Items.join(' '), '\n')
                         rl.close()
                         console.log(this.playerChoice()) 
                         }
@@ -290,10 +324,19 @@ class Characters {
                     console.log(boss1.bossAttackChoice(), this.playerChoice())             
                 }
                 //ATTACK ITEMS//
-                else if (choice === 'shriveled head' || choice === 'sh') {
+                else if (choice === 'shriveled head' || choice === 'sh') { //<------MAIN ATK ITEM FUNC TO BE COPIED/TEST
                     this.Items.splice(this.Items.indexOf('Shriveled Head'), 1)
                     console.log('Hero used Shriveled Head! Boss takes damage!\n')
                     boss1.Health = boss1.Health - (boss1.Health / 5)
+                    console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
+                    console.log('Hero Items:', this.Items.join(', '), '\n')
+                    rl.close()
+                    console.log(boss1.bossAttackChoice(), this.playerChoice()) 
+                }
+                else if (choice === 'death' || choice === 'de') {
+                    this.Items.splice(this.Items.indexOf('Death'), 1)
+                    console.log('Hero used Shriveled Head! Boss takes damage!\n')
+                    boss1.Health = boss1.Health - (boss1.Health / 3)
                     console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
                     console.log('Hero Items:', this.Items.join(', '), '\n')
                     rl.close()
@@ -389,7 +432,7 @@ class Characters {
     bossAttackChoice() {
         let attacks = Object.entries(this.Attacks)
         let attack = Math.floor(Math.random() * Object.keys(this.Attacks).length)
-        console.log(`Boss Attack: ${attacks[attack][0]}`)
+        console.log(`Boss Attack:  ${attacks[attack][0]}`)
         if (player1.Defense !== 0) {
             //console.log('YOOOOOOOOOOOOOOOO', player1.defenseState)
             let res = player1.Defense - attacks[attack][1]

@@ -10,7 +10,7 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
         // console.log('o----(::::::::::>')
         console.log('\n', boss1.logStats())
         //console.log('Boss items:', boss1.Items.join(', '))
-        console.log(player1.logStats(), '\nHero items:\n', '\n', player1.Items.map(item => ' ' + item[0] + ': ' + item[1]).join(', '), '\n', '\no----(::::::::::>')
+        console.log(player1.logStats(), '\nHero Items:\n', '\n  ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n', '\no----(::::::::::>')
         
     }
     if (player1.Health <= 40) {
