@@ -15,6 +15,22 @@ class Characters {
     }
     
     //ATTRIBUTES
+    printHelp() {
+
+            console.log('\n o----(::::::::::>\n',
+                        '\n HOW TO PLAY:\n\n', '-Type the name of of the "Item" or "Attack" you want to choose and press ENTER.\n    The player can type the first two letters of the "Item" or "Attack" as a shorthand.\n\n',
+                        '-Each "Attack" has an "AtkPwr" (attack power) associated with it, respresented by a number.\n\n',
+                        '-When an "Attack" is chosen, the "\Boss\" will be damaged by the amount represented by "AtkPwr",\n    and the players "Attack Power" bar will be depleted by the amount represented by "AtkPwr".\n\n',
+                        '-The player must be mindful of their "Attack" choices. If the "Attack Power" bar is depleted; you will not be able to attack.\n    Use "Items" and "Attack" wisely!\n\n',
+                        '-If a defensive "Item" (Steel shield, etc.) is used; the player will gain a "Defense" bar.\n    All damage will now be absorbed by the defensive "Item" until the "Defense" bar is completely depleted.\n\n',
+                        'DISPLAY COMMANDS:\n\n',
+                        '-If the player needs to see their current stats, type "Pstats"\n\n',
+                        '-If the player needs to see the "Boss\'" current stats, type "Bstats"\n\n',
+
+                        'ENJOY! and THANK YOU! for playing!\n\n',
+                        'o----(::::::::::>')
+
+    }
     getName() {
         return `Name: ${this.Name}`
     }
@@ -141,21 +157,9 @@ class Characters {
     }
     playerChoice() {
         if (player1.Health <= 0) {
-            
-            console.log('\no----(::::::::::>')
-            console.log ('YOU LOSE!')
+            console.log('\no----(::::::::::>\n', 'YOU LOSE!')
             console.log('o----(::::::::::>')
-            console.log('') 
-            
-            return ''
-        } else if (boss1.Health <= 0) {
-            
-            console.log('o----(::::::::::>')
-            console.log ('YOU HAVE EMERGED TRIUMPHANT, HERO!') 
-            console.log('o----(::::::::::>')
-            console.log('')
-    
-            return ''
+            return 'GAME OVER'
         }
         if (player1.Defense > 0) {
 
@@ -167,10 +171,28 @@ class Characters {
 
         const rl = readline.createInterface({ input, output });
       
-        rl.question('\nChoose your attack or item from the Hero\'s \'Attacks\' or \'Items\' list!\n', (choice) => {
+        rl.question('\nChoose your attack or item from the Hero\'s \'Attacks\' or \'Items\' list!\n\nType "Help" for directions on HOW TO PLAY.\n', (choice) => {
                 choice = choice.toLowerCase();
+                //HELP//
+                if (choice === 'help') {
+                    this.printHelp()
+                    rl.close() 
+                    return this.playerChoice()
+                }
+                //DISPLAY//
+                else if (choice === 'pstats') {
+                    console.log('\n', player1.logStats())
+                    console.log('Hero Items: \n\n', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')))
+                    rl.close() 
+                    return this.playerChoice()
+                }
+                else if (choice === 'bstats') {
+                    console.log('\n', boss1.logStats())
+                    rl.close() 
+                    return this.playerChoice()
+                }
                 //EXPLOSIVE ATTACKS//
-                if (choice === 'rpg' || choice === 'r') {  //<-----MAIN FUNCTION LOGIC TO COPY FOR ATTACKS
+                else if (choice === 'rpg' || choice === 'rp') {  //<-----MAIN FUNCTION LOGIC TO COPY FOR ATTACKS
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[0])
                     console.log('\nSweet, sweet, Destruction!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
@@ -180,7 +202,7 @@ class Characters {
                     console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')))
 
                 }
-                else if (choice === 'airstrike' || choice === 'a') {
+                else if (choice === 'airstrike' || choice === 'ai') {
                     // boss1.Health = boss1.Health - (Object.values(player1.Attacks)[1])
                     // console.log('\nSpreading democracy!\n')
                     // console.log('Boss', boss1.getHealthBar(), '\n')
@@ -194,28 +216,28 @@ class Characters {
                     console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
                     console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')))
                 }
-                else if (choice === 'grenade' || choice === 'g') {
+                else if (choice === 'grenade' || choice === 'gr') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[2])
                     console.log('\nHere comes the BOOM!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )  
                 }
-                else if (choice === 'laser strike' || choice === 'l') {
+                else if (choice === 'laser strike' || choice === 'la') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[3])
                     console.log('\nZip, Zap, Zow, BITCH!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 }
-                else if (choice === 'precision strike' || choice === 'p') {
+                else if (choice === 'precision strike' || choice === 'pr') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[4])
                     console.log('\nWait for it..............BOOOOM!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 }
-                else if (choice === 'mortar' || choice === 'm') {
+                else if (choice === 'mortar' || choice === 'mo') {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5])
                     console.log('\nHail Mary!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n')
@@ -223,7 +245,7 @@ class Characters {
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 } 
                 //HEALING ITEMS//
-                else if (choice === 'herbs' || choice === 'h') {
+                else if (choice === 'herbs' || choice === 'he') {
                     //this.Items.splice(this.Items.indexOf('Herbs'), 1)
                     this.Items = this.Items.filter(el => !el.includes('Herbs'))
 
@@ -236,7 +258,7 @@ class Characters {
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 } 
-                else if (choice === 'tonic' || choice === 't') { //<----MAIN UPDATED HEALING ITEM FUNC
+                else if (choice === 'tonic' || choice === 'to') { //<----MAIN UPDATED HEALING ITEM FUNC
                     //this.Items.splice(this.Items.indexOf('Tonic'), 1)
                     this.Items = this.Items.filter(el => !el.includes('Tonic'))
                     player1.Health = player1.Health + 50
@@ -261,7 +283,7 @@ class Characters {
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 }
                 //DEFENSE ITEMS//
-                else if (choice === 'bark shield' || choice === 'b') {
+                else if (choice === 'bark shield' || choice === 'ba') {
                     //this.Items.splice(this.Items.indexOf('Bark Shield'), 1)
                     this.Items = this.Items.filter(el => !el.includes('Bark Shield'))
 
@@ -290,7 +312,7 @@ class Characters {
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                     
-                } else if (choice === 'immovable object' || choice === 'i') { //<-----DEF ITEM LOGIC TO BE USED ON ALL W/ HELPERS
+                } else if (choice === 'immovable object' || choice === 'im') { //<-----DEF ITEM LOGIC TO BE USED ON ALL W/ HELPERS
                     let item = 'Immovable Object'
                     
                     if (this.checkInventory(item)) {
