@@ -2,7 +2,7 @@ const { attributes } = require(`./attributes`)
 
 
 class Characters {
-    constructor (name = '', type = '', level = null, health = [], defense = 0, attacks, items, defenseState = false) {
+    constructor (name = '', type = '', level = null, health, defense = 0, attacks, items, defenseState = false, atkPwr) {
         this.Name = name;
         this.Type = type;
         this.Level = level;
@@ -11,6 +11,7 @@ class Characters {
         this.Attacks = attacks;
         this.Items = items
         this.DefenseState = defenseState
+        this.AtkPwr = atkPwr;
     }
     
     //ATTRIBUTES
@@ -37,6 +38,13 @@ class Characters {
         } 
         return `Defense: ${arr.join('')}`
     }
+    getAtkPwrBar() {
+        let arr = []
+        for (let i = 0; i <= this.AtkPwr; i++) {
+            arr.push('|')
+        }
+        return `Atk Pwr: ${arr.join('')}` 
+    }
     getAttacks() {   
         return `Attacks:\n\n  ${Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |')}`
     }
@@ -62,8 +70,10 @@ class Characters {
         console.log(this.getName())
         console.log(this.getType())
         console.log(this.getLevel(), '\n')
-        console.log(this.getHealthBar())
-        console.log(this.getDefenseBar(this.Defense), '\n')
+        console.log(this.Name, this.getHealthBar())
+        if (!(this instanceof Boss)) console.log(this.Name, this.getAtkPwrBar())
+        console.log('\n')
+        //console.log(this.getDefenseBar(this.Defense), '\n')
         console.log(this.Name, this.getAttacks())
         //console.log(this.getItems())
         return ''
@@ -432,13 +442,14 @@ class Characters {
     bossAttackChoice() {
         let attacks = Object.entries(this.Attacks)
         let attack = Math.floor(Math.random() * Object.keys(this.Attacks).length)
-        console.log(`Boss Attack:  ${attacks[attack][0]}`)
+        console.log(`Boss Attack:  ${attacks[attack][0]}\n`)
         if (player1.Defense !== 0) {
             //console.log('YOOOOOOOOOOOOOOOO', player1.defenseState)
             let res = player1.Defense - attacks[attack][1]
             if (res >= 0) {
                 player1.Defense = player1.Defense - attacks[attack][1]
                 console.log('Hero', player1.getHealthBar())
+                console.log('Hero', player1.getAtkPwrBar())
                 return ''
                 
             }
@@ -448,12 +459,14 @@ class Characters {
             player1.Health = player1.Health + player1.Defense
             player1.Defense = 0
             console.log('Hero', player1.getHealthBar())
+            console.log('Hero', player1.getAtkPwrBar())
             return ''
             
 
         }
         player1.Health = player1.Health - attacks[attack][1]
         console.log('Hero', player1.getHealthBar())
+        console.log('Hero', player1.getAtkPwrBar())
         return ''
         
     }
@@ -468,21 +481,21 @@ class Characters {
 }
 
     class Boss extends Characters {
-        constructor(name, type, level, health, defense, attacks, items, defenseState){
-            super(name, type, level, health, defense, attacks, items, defenseState)
+        constructor(name, type, level, health, defense, attacks, items, defenseState, atkPwr){
+            super(name, type, level, health, defense, attacks, items, defenseState, atkPwr)
             
         }
     }
     
     class Player extends Characters {
-        constructor(name, type, level, health,  defense, attacks, items, defenseState){
-            super(name, type, level, health,  defense, attacks, items, defenseState)
+        constructor(name, type, level, health,  defense, attacks, items, defenseState, atkPwr){
+            super(name, type, level, health,  defense, attacks, items, defenseState, atkPwr)
         }
     }
     
-    const boss1 = new Boss('Fenrir', 'Fire', 8, 200, 25, attributes.fireAttacks)
+    const boss1 = new Boss('Fenrir', 'Fire', 8, 200, 25, attributes.fireAttacks, false, null, 100)
     
-    const player1 = new Player('Hero', 'Explosive', 7, 85, 0, attributes.explosiveAttacks)
+    const player1 = new Player('Hero', 'Explosive', 7, 85, 0, attributes.explosiveAttacks, false, null, 100)
 
 module.exports = {
     Characters,
