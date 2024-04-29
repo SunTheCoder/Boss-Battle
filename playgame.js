@@ -8,9 +8,19 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
         console.log('\no----(::::::::::>', '\nYOUR EPIC BOSS BATTLE BEGINS!', '\no----(::::::::::>\n')
         // console.log('')
         // console.log('o----(::::::::::>')
-        console.log('\n', boss1.logStats())
-        //console.log('Boss items:', boss1.Items.join(', '))
-        console.log(player1.logStats(), '\nHero Items:\n', '\n  ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n', '\no----(::::::::::>')
+        setTimeout(function() {
+            console.log('\n', boss1.logStats())
+            //console.log('Boss items:', boss1.Items.join(', '))
+        }, 3000)
+        setTimeout(function() {
+            
+            console.log(player1.logStats(), '\nHero Items:\n', '\n  ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
+        }, 6000)
+        
+        setTimeout(function() {
+            console.log('GOOD LUCK, WARRIOR!')
+        },9000)
+            
         
     }
     if (player1.Health <= 40) {
@@ -25,8 +35,10 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
     // if (player1.Health === Math.floor(Math.random() * player1.Health) || player1.Health <= 25) {
     //     player1.playerUseBoostItem()
     // }
-    console.log(' NEW TURN!\no----(::::::::::>\n')
-    console.log(boss1.bossAttackChoice(), player1.playerChoice())
+    setTimeout(function() {
+    console.log('\no----(::::::::::>\nNEW TURN!\no----(::::::::::>\n')
+        console.log(boss1.bossAttackChoice(), player1.playerChoice())
+    }, 14000);
 
     return
 }

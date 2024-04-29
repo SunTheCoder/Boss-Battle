@@ -33,7 +33,8 @@ class Characters {
 
     }
     getName() {
-        return `Name: ${this.Name}`
+        if (this instanceof Boss) return `Boss: ${this.Name}`
+        return `Player: ${this.Name}`
     }
     getType() {
         return `Type: ${this.Type}`
@@ -159,13 +160,13 @@ class Characters {
     playerChoice() {
         if (boss1.Health <= 0) {
             console.log('\no----(::::::::::>\n', 'YOU ARE TRIUMPHANT, HERO!')
-            console.log('o----(::::::::::>\n')
-            return 'GAME OVER'
+            console.log('o----(::::::::::>')
+            return '\no----(::::::::::>\nGAME OVER\no----(::::::::::>'
         }
         if (player1.Health <= 0) {
             console.log('\no----(::::::::::>\n', 'YOU LOSE!')
-            console.log('o----(::::::::::>\n')
-            return 'GAME OVER'
+            console.log('o----(::::::::::>')
+            return'\no----(::::::::::>\nGAME OVER\nno----(::::::::::>'
         }
         if (player1.Defense > 0) {
 
@@ -205,35 +206,38 @@ class Characters {
                     if (this.AtkPwr <= 0) {
                         boss1.Health = boss1.Health - (Object.values(player1.Attacks)[0] / 2)
                         this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[0] / 2)
-                    console.log(`\nHero used RPG! ${boss1.Name} takes ${Object.values(this.Attacks)[0] / 2} damage!\n`, '\nZip, Zap, Zow, BITCH!\n')
+                    console.log(`\nHero used RPG! ${boss1.Name} takes ${Object.values(this.Attacks)[0] / 2} damage!\n`, '\nSweet, sweet, Destruction!\n')
 
                     } else {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[0])
                     this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[0])
-                    console.log(`\nHero used RPG! ${boss1.Name} takes ${Object.values(this.Attacks)[0]} damage!\n`, '\nZip, Zap, Zow, BITCH!\n')
+                    console.log(`\nHero used RPG! ${boss1.Name} takes ${Object.values(this.Attacks)[0]} damage!\n`, '\nSweet, sweet, Destruction!\n')
 
                     }
-                    console.log('\nSweet, sweet, Destruction!\n')
+                    
                     console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
-                    rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerChoice())
                     console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
-                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')))
+                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
+                    rl.close()   
+                    setTimeout(function() {
+                            console.log(boss1.bossAttackChoice(), player1.playerChoice())
+                        }, 1000);
+                    //console.log(boss1.bossAttackChoice(), this.playerChoice())
 
                 }
                 else if (choice === 'airstrike' || choice === 'ai') {
                     if (this.AtkPwr <= 0) {
                         boss1.Health = boss1.Health - (Object.values(player1.Attacks)[1] / 2)
                         this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[1] / 2)
-                    console.log(`\nHero used Airstrike! ${boss1.Name} takes ${Object.values(this.Attacks)[1] / 2} damage!\n`, '\nZip, Zap, Zow, BITCH!\n')
+                    console.log(`\nHero used Airstrike! ${boss1.Name} takes ${Object.values(this.Attacks)[1] / 2} damage!\n`, '\nSpreading Democracy!\n')
 
                     } else {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[1])
                     this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[1])
-                    console.log(`\nHero used Airstrike! ${boss1.Name} takes ${Object.values(this.Attacks)[1]} damage!\n`, '\nZip, Zap, Zow, BITCH!\n')
+                    console.log(`\nHero used Airstrike! ${boss1.Name} takes ${Object.values(this.Attacks)[1]} damage!\n`, '\nSpreading Democracy!\n')
 
                     }
-                    console.log('\nSpreading Democracy!\n')
+                    
                     console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice())
@@ -244,15 +248,14 @@ class Characters {
                     if (this.AtkPwr <= 0) {
                         boss1.Health = boss1.Health - (Object.values(player1.Attacks)[2] / 2)
                         this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[2] / 2)
-                    console.log(`\nHero used Grenade! ${boss1.Name} takes ${Object.values(this.Attacks)[2] / 2} damage!\n`, '\nZip, Zap, Zow, BITCH!\n')
+                    console.log(`\nHero used Grenade! ${boss1.Name} takes ${Object.values(this.Attacks)[2] / 2} damage!\n`, '\nHere comes the BOOM!\n')
 
                     } else {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[2])
                     this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[2])
-                    console.log(`\nHero used Grenade! ${boss1.Name} takes ${Object.values(this.Attacks)[2]} damage!\n`, '\nZip, Zap, Zow, BITCH!\n')
+                    console.log(`\nHero used Grenade! ${boss1.Name} takes ${Object.values(this.Attacks)[2]} damage!\n`, '\nHere comes the BOOM!\n')
 
                     }
-                    console.log('\nHere comes the BOOM!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
 
                     rl.close()   
@@ -283,15 +286,14 @@ class Characters {
                     if (this.AtkPwr <= 0) {
                         boss1.Health = boss1.Health - (Object.values(player1.Attacks)[4] / 2)
                         this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[4] / 2)
-                    console.log(`\nHero used Laser Strike! ${boss1.Name} takes ${Object.values(this.Attacks)[4] / 2} damage!\n`, '\nZip, Zap, Zow, BITCH!\n')
+                    console.log(`\nHero used Laser Strike! ${boss1.Name} takes ${Object.values(this.Attacks)[4] / 2} damage!\n`, '\nWait for it..............BOOOOM!\n')
 
                     } else {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[4])
                     this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[4])
-                    console.log(`\nHero used Laser Strike! ${boss1.Name} takes ${Object.values(this.Attacks)[4]} damage!\n`, '\nZip, Zap, Zow, BITCH!\n')
+                    console.log(`\nHero used Laser Strike! ${boss1.Name} takes ${Object.values(this.Attacks)[4]} damage!\n`, '\nWait for it..............BOOOOM!\n')
 
                     }
-                    console.log('\nWait for it..............BOOOOM!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
@@ -302,15 +304,14 @@ class Characters {
                     if (this.AtkPwr <= 0) {
                         boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5] / 2)
                         this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[5] / 2)
-                    console.log(`\nHero used Laser Strike! ${boss1.Name} takes ${Object.values(this.Attacks)[5] / 2} damage!\n`, '\nZip, Zap, Zow, BITCH!\n')
+                    console.log(`\nHero used Mortar! ${boss1.Name} takes ${Object.values(this.Attacks)[5] / 2} damage!\n`, '\nHail Mary!\n')
 
                     } else {
                     boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5])
                     this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[5])
-                    console.log(`\nHero used Laser Strike! ${boss1.Name} takes ${Object.values(this.Attacks)[5]} damage!\n`, '\nZip, Zap, Zow, BITCH!\n')
+                    console.log(`\nHero used Mortar! ${boss1.Name} takes ${Object.values(this.Attacks)[5]} damage!\n`, '\nHail Mary!\n')
 
                     }
-                    console.log('\nHail Mary!\n')
                     console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
                     rl.close()   
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
@@ -331,29 +332,46 @@ class Characters {
                     rl.close()
                     console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
                 } 
-                else if (choice === 'tonic' || choice === 'to') { //<----MAIN UPDATED HEALING ITEM FUNC
+                else if (choice === 'tonic' || choice === 'to') { //<----MAIN UPDATED HEALING ITEM FUNC dynmi
                     //this.Items.splice(this.Items.indexOf('Tonic'), 1)
-                    this.Items = this.Items.filter(el => !el.includes('Tonic'))
+                    let item = 'Tonic'
+                    
+                    if (this.checkInventory(item)) {
+                        
+                    this.Items = this.Items.filter(el => !el.includes(item))
                     player1.Health = player1.Health + 50
-                    console.log('\nHero used Tonic! Health +50!\n')
+                    console.log(`\nHero used ${item}! Health +50!\n`)
                     console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
                     console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
                     //            console.log('Hero', player1.getHealthBar())
                     rl.close()
-                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )  
+                    } else {
+                        console.log(`${item} is not in Hero\'s Inventory! Check the Items list.\n`, '\n', this.editListString(this.Items.map(item => item[0] + ': ' + item[1]).join(' | ')))
+                        rl.close()
+                        console.log(this.playerChoice()) 
+                    } 
                 } 
                 else if (choice === 'suluku\'s blessing' || choice === 'su') {
-                    //this.Items.splice(this.Items.indexOf('Suluku\'s Blessing'), 1)
-                    this.Items = this.Items.filter(el => !el.includes('Suluku\'s Blessing'))
+    
+                    let item = 'Suluku\'s blessing'
 
+                    if (this.checkInventory(item)) {
+                        
+                    this.Items = this.Items.filter(el => !el.includes(item))
                     player1.Health = player1.Health + 75
-                    console.log('\nHero used Suluku\'s Blessing! Health +75!\n')
+                    console.log(`\nHero used ${item}! Health +75!\n`)
                     console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
                     console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
                     //console.log(this.Items.join(', '))
                             // console.log('Hero', player1.getHealthBar())
                     rl.close()
-                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
+                    console.log(boss1.bossAttackChoice(), this.playerChoice(), ) 
+                    } else {
+                        console.log(`${item} is not in Hero\'s Inventory! Check the Items list.\n`, '\n', this.editListString(this.Items.map(item => item[0] + ': ' + item[1]).join(' | ')))
+                        rl.close()
+                        console.log(this.playerChoice()) 
+                    } 
                 }
                 //DEFENSE ITEMS//
                 else if (choice === 'bark shield' || choice === 'ba') {
@@ -431,7 +449,7 @@ class Characters {
                 //ATTACK ITEMS//
                 else if (choice === 'shriveled head' || choice === 'sh') { //<------MAIN ATK ITEM FUNC TO BE COPIED/TEST
                     this.Items.splice(this.Items.indexOf('Shriveled Head'), 1)
-                    console.log('Hero used Shriveled Head! Boss takes damage!\n')
+                    console.log(`Hero used Shriveled Head! Boss takes ${boss1.Health / 4} damage!\n`)
                     boss1.Health = boss1.Health - (boss1.Health / 4)
                     console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
                     console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
@@ -448,10 +466,11 @@ class Characters {
                     console.log(boss1.bossAttackChoice(), this.playerChoice()) 
                 }
                 else {
-                    console.log('\nEnter a valid response please:\n', '\n RPG\n', 'Airstrike\n', 'Grenade\n', 
-                                'Laser Strike\n', 'Precision Strike\n', 'Mortar\n', 'Herbs\n', 'Tonic\n', 
-                                'Suluku\'s Blessing\n', 'Bark Shield\n', 'Steel Shield\n', 'Immovable Object\n',
-                                'Ancestral Boon\n', 'Shriveled Head\n')
+                    // console.log('\nEnter a valid response please:\n', '\n RPG\n', 'Airstrike\n', 'Grenade\n', 
+                    //             'Laser Strike\n', 'Precision Strike\n', 'Mortar\n', 'Herbs\n', 'Tonic\n', 
+                    //             'Suluku\'s Blessing\n', 'Bark Shield\n', 'Steel Shield\n', 'Immovable Object\n',
+                    //             'Ancestral Boon\n', 'Shriveled Head\n')
+                    console.log('\nEnter a valid response please:\n\n To choose an "Item" or "Attack", type the selection or the first two letters of the selection and press ENTER.\n, For example, "Airstrike" or "Ai" will execute the "Airstrike" attack and damage the boss.\n "Tonic" or "To" will use the "Tonic" "Item" and add Health to the "Health" bar if the item is available.')
                     rl.close() 
                     return this.playerChoice()
                 }
@@ -589,7 +608,7 @@ class Characters {
         }
     }
     
-    const boss1 = new Boss('Fenrir', 'Fire', 8, 200, 25, attributes.fireAttacks)
+    const boss1 = new Boss('Fenrir', 'Fire', 8, 50, 25, attributes.fireAttacks)
 
     //fenrir: 'Fenrir', 'Fire', 8, 200, 25, attributes.fireAttacks, false, null, 100
     
