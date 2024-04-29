@@ -13,6 +13,8 @@ playGame()
     //console.log(Object.values(player1.Attacks)[0])
     // console.log(player1)
 //   console.log(player1.Items)
+// console.log(player1.Attacks)
+// console.log(player1.Attacks)
 
 //   console.log(player1.Items.indexOf('Tonic'))
     // console.log((player1.Items.filter(el => el.includes('Immovable Object')))[0][1])

@@ -4,7 +4,7 @@ const attributes = {
     
     fireAttacks:      {'Fire Tornado': 8, 'Flame Breath': 10, 'Combustion': 20, 'Flame Tongue': 12,     'Third-Degree': 9},
     
-    explosiveAttacks: {'RPG': 15,         'Airstrike': 20,    'Geanade': 7,     'Laser Strike': 30,     'Precision Strike': 10,   'Mortar': 8},
+    explosiveAttacks: {'RPG': 15,         'Airstrike': 20,    'Grenade': 7,     'Laser Strike': 30,     'Precision Strike': 10,   'Mortar': 8},
     
     electricAttacks:  {'Shock': 9,        'Lightning': 15,    'Maelstrom': 25,  'Arc Bomb': 30},
     
