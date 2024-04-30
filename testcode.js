@@ -357,3 +357,19 @@ console.log(editListString('I love, rock and r,oll')) //=> I love+ rock and r+ol
                      // console.log(boss1.bossAttackChoice(), this.playerChoice())
                     // console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
                     // console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')))
+
+
+
+
+                        // if (player1.Health <= 40) {      //Randomized game condtions
+    //     player1.playerUseHealingItem()
+        
+    // }
+    // if (player1.Health <= 75) {
+        
+    //     player1.playerUseDefenseItem()
+      
+    // }
+    // if (player1.Health === Math.floor(Math.random() * player1.Health) || player1.Health <= 25) {
+    //     player1.playerUseBoostItem()
+    // }
