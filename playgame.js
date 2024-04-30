@@ -10,6 +10,8 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
         // console.log('o----(::::::::::>')
         setTimeout(function() {
             console.log('\n', boss1.logStats())
+            console.log('o----(::::::::::>\n')
+
             //console.log('Boss items:', boss1.Items.join(', '))
         }, 3000)
         setTimeout(function() {
@@ -18,7 +20,7 @@ const playGame = (count) => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
         }, 6000)
         
         setTimeout(function() {
-            console.log('GOOD LUCK, WARRIOR!')
+            console.log('o----(::::::::::>\nGOOD LUCK, WARRIOR!\no----(::::::::::>')
         },9000)
             
         

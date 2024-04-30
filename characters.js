@@ -112,17 +112,19 @@ class Characters {
     timeoutTurn() {
         setTimeout(function() {
             console.log(boss1.bossAttackChoice(), player1.playerChoice())
+            console.log('o----(::::::::::>')
+
         }, 3500)
     }
     pAttack = (attack) => {
     if (this.AtkPwr <= 0) {
-            boss1.Health = boss1.Health - (Object.values(player1.Attacks)[Object.keys(player1.Attacks).indexOf(attack)] / 2)
-            this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)] / 2)
+        boss1.Health = boss1.Health - (Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number') / 2)
+        this.AtkPwr = this.AtkPwr * 0
         console.log(`\nHero used ${attack}! ${boss1.Name} takes ${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number') / 2} damage!\n`, `\n${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'string')}\n`)
 
         } else {
-        boss1.Health = boss1.Health - (Object.values(player1.Attacks)[Object.keys(player1.Attacks).indexOf(attack)])
-        this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)])
+        boss1.Health = boss1.Health - Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number')
+        this.AtkPwr = this.AtkPwr - Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number')
         console.log(`\nHero used ${attack}! ${boss1.Name} takes ${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number')} damage!\n`, `\n${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'string')}\n`)
 
         }
