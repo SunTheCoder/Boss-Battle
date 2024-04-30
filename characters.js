@@ -109,8 +109,13 @@ class Characters {
 
     }
     //BATTLE
+    timeoutTurn() {
+        setTimeout(function() {
+            console.log(boss1.bossAttackChoice(), player1.playerChoice())
+        }, 3500)
+    }
     pAttack = (attack) => {
-        if (this.AtkPwr <= 0) {
+    if (this.AtkPwr <= 0) {
             boss1.Health = boss1.Health - (Object.values(player1.Attacks)[Object.keys(player1.Attacks).indexOf(attack)] / 2)
             this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)] / 2)
         console.log(`\nHero used ${attack}! ${boss1.Name} takes ${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number') / 2} damage!\n`, `\n${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'string')}\n`)
@@ -222,59 +227,36 @@ class Characters {
                     return this.playerChoice()
                 }
                 //EXPLOSIVE ATTACKS//
-                else if (choice === 'rpg' || choice === 'rp') {  //<-----MAIN FUNCTION LOGIC TO COPY FOR ATTACKS
+                else if (choice === 'rpg' || choice === 'rp') {  
                     this.pAttack('RPG')
                     rl.close()   
-                    setTimeout(function() {
-                            console.log(boss1.bossAttackChoice(), player1.playerChoice())
-                        }, 3500)
+                    this.timeoutTurn()
                 }
                 else if (choice === 'airstrike' || choice === 'ai') {
                     this.pAttack('Airstrike')
                     rl.close()
-                    setTimeout(function() {
-                        console.log(boss1.bossAttackChoice(), player1.playerChoice())
-                    }, 3500);      
+                    this.timeoutTurn()    
                 }
                 else if (choice === 'grenade' || choice === 'gr') {
                     this.pAttack('Grenade')
                     rl.close()   
-                    setTimeout(function() {
-                            console.log(boss1.bossAttackChoice(), player1.playerChoice())
-                        }, 3500)
-                    }
+                    this.timeoutTurn()
+                }
                 else if (choice === 'laser strike' || choice === 'la') {
                     this.pAttack('Laser Strike')
                     rl.close()   
-                    setTimeout(function() {
-                            console.log(boss1.bossAttackChoice(), player1.playerChoice())
-                        }, 3500)
-                    } 
+                    this.timeoutTurn()
+                }
                 else if (choice === 'precision strike' || choice === 'pr') {
                     this.pAttack('Precision Strike')
                     rl.close()   
-                    setTimeout(function() {
-                            console.log(boss1.bossAttackChoice(), player1.playerChoice())
-                        }, 3500)
+                    this.timeoutTurn()
                     } 
                 else if (choice === 'mortar' || choice === 'mo') {
-                    if (this.AtkPwr <= 0) {
-                        boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5] / 2)
-                        this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[5] / 2)
-                    console.log(`\nHero used Mortar! ${boss1.Name} takes ${Object.values(this.Attacks)[5] / 2} damage!\n`, '\nHail Mary!\n')
-
-                    } else {
-                    boss1.Health = boss1.Health - (Object.values(player1.Attacks)[5])
-                    this.AtkPwr = this.AtkPwr - (Object.values(this.Attacks)[5])
-                    console.log(`\nHero used Mortar! ${boss1.Name} takes ${Object.values(this.Attacks)[5]} damage!\n`, '\nHail Mary!\n')
-
-                    }
-                    console.log('Boss', boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
+                    this.pAttack('Mortar')
                     rl.close()   
-                    console.log(boss1.bossAttackChoice(), this.playerChoice(), )   
-                    console.log('Hero Attacks:\n', '\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + item[1] + ' AtkPwr').join(' |'))
-                    console.log('\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
-                } 
+                    this.timeoutTurn()
+                    } 
                 //HEALING ITEMS//
                 else if (choice === 'herbs' || choice === 'he') {
                     //this.Items.splice(this.Items.indexOf('Herbs'), 1)
