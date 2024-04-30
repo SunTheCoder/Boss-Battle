@@ -12,9 +12,9 @@ const attributes = {
     
     atrophyAttacks:   {'Poison Dart': 7,    'Touch of Death': 17, 'Poison Slash': 13, 'Ashes to Ashes': 25,  'Zulu Spear': 16},
     
-    itemsTierOne:   {'Herbs': [25, 'Health'],              'Passionfruit': [25, 'AtkPwr'],  'Bark Shield': [25, 'Def'],       'Herbal Salve': null, 'Quickness Potion': null, 'Smoke Bomb': null},
-    itemsTierTwo:   {'Tonic': [50, 'Health'],              'Thunder Punch': [50, 'AtkPwr'],   'Steel Shield': [50, 'Def'],     'Holy Water': null,   'Alchemist Vial': null,   'Shriveled Head': 'Boss health cut by 1/4'},
-    itemsTierThree: {'Suluku\'s Blessing': [75, 'Health'], 'War Machine': [75, 'AtkPwr'],   'Immovable Object': [75, 'Def'],      'Panacea': null,         'Ancestral Boon': 'Doubles Def or Def +50',   'Death': 'Boss health cut by 1/3'}
+    itemsTierOne:   {'Herbs': [25, 'Health'],              'Passionfruit': [25, 'AtkPwr'],      'Bark Shield': [25, 'Def'],           'Herbal Salve': null,    'Quickness Potion': null,                     'Smoke Bomb': null},
+    itemsTierTwo:   {'Tonic': [50, 'Health'],              'Thunder Punch': [50, 'AtkPwr'],     'Steel Shield': [50, 'Def'],          'Holy Water': null,      'Alchemist Vial': null,                       'Shriveled Head': 'Boss health cut by 1/4'},
+    itemsTierThree: {'Suluku\'s Blessing': [75, 'Health'], 'War Machine': [75, 'AtkPwr'],       'Immovable Object': [75, 'Def'],      'Panacea': null,         'Ancestral Boon': 'Doubles Def or Def +50',   'Death': 'Boss health cut by 1/3'}
     
     }
 

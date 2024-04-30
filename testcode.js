@@ -373,3 +373,16 @@ console.log(editListString('I love, rock and r,oll')) //=> I love+ rock and r+ol
     // if (player1.Health === Math.floor(Math.random() * player1.Health) || player1.Health <= 25) {
     //     player1.playerUseBoostItem()
     // }
+
+     // console.log(player1.getItems())
+    // console.log(player1.Items)
+    // console.log(player1.useItem())
+    // console.log(25 % boss1.bossAttackChoice())
+    //console.log(Object.values(player1.Attacks)[0])
+    // console.log(player1)
+//   console.log(player1.Items)
+// console.log(player1.Attacks)
+// console.log(player1.Attacks)
+
+//   console.log(player1.Items.indexOf('Tonic'))
+    // console.log((player1.Items.filter(el => el.includes('Immovable Object')))[0][1])

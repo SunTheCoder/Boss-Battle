@@ -2,8 +2,8 @@ const { boss1 } = require('./characters')
 const { player1 } = require('./characters')
 
 const playGame = () => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
-    //INTRO
     
+    //INTRO//
     console.log('\no----(::::::::::>', '\nYOUR EPIC BOSS BATTLE BEGINS!', '\no----(::::::::::>\n')
     // console.log('')
     // console.log('o----(::::::::::>')
@@ -53,7 +53,7 @@ const playGame = () => { //PLAY GAME AS HELPER TO BE CALLED PER TURN
     setTimeout(function() {
         console.log('o----(::::::::::>\nGOOD LUCK, WARRIOR!\no----(::::::::::>')
     }, 54000)
-    
+    //END OF INTRO//
 
     setTimeout(function() {
     console.log('\no----(::::::::::>\nNEW TURN!\no----(::::::::::>\n')
