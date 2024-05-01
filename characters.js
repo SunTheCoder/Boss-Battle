@@ -92,7 +92,7 @@ class Characters {
         if (!(this instanceof Boss)) console.log(this.Name, this.getAtkPwrBar())
         console.log('\n')
         //console.log(this.getDefenseBar(this.Defense), '\n')
-        if (this instanceof Boss) console.log(this.Name, this.getAttacks())
+        if (this instanceof Boss) console.log(this.Name, Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + Object.values(this.Attacks)[Object.keys(boss1.Attacks).indexOf(item[0])].filter(el => typeof el === 'number')+ ' AtkPwr').join(' |'))
         else console.log(this.Name, 'Attacks:\n\n', Object.entries(this.Attacks).map(item => ' ' + item[0] + ': ' + Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(item[0])].filter(el => typeof el === 'number')+ ' AtkPwr').join(' |'))
         //console.log(this.getItems())
         return ''
@@ -418,7 +418,7 @@ class Characters {
 
                 //UNIQUE ATTACK ITEMS//
                 else if (choice === 'shriveled head' || choice === 'sh') { //<------MAIN ATK ITEM FUNC TO BE COPIED/TEST
-                    let item = 'Shirveled Head'
+                    let item = 'Shriveled Head'
 
                     if (this.checkInventory(item)) {
                     this.Items = this.Items.filter(el => !el.includes(item))
