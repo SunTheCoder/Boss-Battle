@@ -2,7 +2,7 @@ const { attributes } = require(`./attributes`)
 
 
 class Characters {
-    constructor (name = '', type = '', level = null, health, defense = 0, attacks, items, defenseState = false, atkPwr) {
+    constructor (name = '', type = '', level = null, health, defense = 0, attacks, items, defenseState = false, atkPwr, winPhrase) {
         this.Name = name;
         this.Type = type;
         this.Level = level;
@@ -12,6 +12,7 @@ class Characters {
         this.Items = items
         this.DefenseState = defenseState
         this.AtkPwr = atkPwr;
+        this.WinPhrase = winPhrase;
     }
     
     //ATTRIBUTES
