@@ -1,4 +1,7 @@
 # Boss-Battle
+
+NOTE IN MAIN.JS!
+
 outro
 
 set interval intro

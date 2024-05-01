@@ -4,7 +4,9 @@ const boss1 = (require('./characters'))
 
 player1.getItems()
 
+//if condition on character choice then run following with obj
 player1.chooseBoss()
+
 //playGame()
 
 // const items = [
