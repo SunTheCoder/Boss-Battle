@@ -496,3 +496,18 @@ console.log(editListString('I love, rock and r,oll')) //=> I love+ rock and r+ol
                     // this.listAttacks()
                     // this.listItems()
                     //console.log('Hero', player1.getHealthBar()) 
+
+                    chooseBoss() {
+                      const readline = require('node:readline');
+                      const { stdin: input, stdout: output } = require('node:process');
+              
+                      const rl = readline.createInterface({ input, output });
+              
+                      rl.question('\Which story will you choose?\nThe Demise of Fenrir\nThe Sun Rises\n')
+              
+                      let choice = choice.toLowerCase()
+              
+                      if (choice === 'fenrir' || choice === 'fe') {
+                          boss = Boss.boss1
+                      }
+                  }

@@ -4,7 +4,8 @@ const boss1 = (require('./characters'))
 
 player1.getItems()
 
-playGame()
+player1.chooseBoss()
+//playGame()
 
 // const items = [
 //     [ 'Herbs', [ 25, 'Health' ] ],

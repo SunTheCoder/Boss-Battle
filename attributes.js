@@ -14,9 +14,18 @@ const attributes = {
     
     electricAttacks:  {'Shock': 9,        'Lightning': 15,    'Maelstrom': 25,  'Arc Bomb': 30},
     
-    bloodAttacks:     {'Sinister Bite': 15, 'False Swipe': 10,    'Backstab': 20,     'Cold Shank': 5,  'Deathly Stare': 8},
+    bloodAttacks:     {'Sinister Bite': [15, 'phrase'], 
+                       'False Swipe': [10, 'phrase'],    
+                       'Backstab': [20, 'phrase'],     
+                       'Cold Shank': [5, 'phrase'],  
+                       'Deathly Stare': [8, 'phrase']},
     
-    atrophyAttacks:   {'Poison Dart': [7, 'Die slowly, painfully, devil!'],    'Touch of Death': [17, 'Decay, comsume you!'], 'Transition': [0, 'Protect me, ancestors!'], 'Ashes to Ashes': [25, 'Dust to Dust.'],  'Zulu Spear': [16, 'I never miss.']},
+    atrophyAttacks:   {'Poison Dart': [7, 'Die slowly, painfully, devil!'],    
+                       'Touch of Death': [17, 'Decay, comsume you!'], 
+                       'Transition': [0, 'Protect me, ancestors!'], 
+                       'Ashes to Ashes': [25, 'Dust to Dust.'],  
+                       'Zulu Spear': [16, 'I never miss.']
+                        },
     
     itemsTierOne:   {'Herbs': [25, 'Health'],              'Passionfruit': [25, 'AtkPwr'],      'Bark Shield': [25, 'Def'],           'Herbal Salve': null,    'Quickness Potion': null,                     'Smoke Bomb': null},
     itemsTierTwo:   {'Tonic': [50, 'Health'],              'Thunder Punch': [50, 'AtkPwr'],     'Steel Shield': [50, 'Def'],          'Holy Water': null,      'Alchemist Vial': null,                       'Shriveled Head': 'Boss health cut by 1/4'},
