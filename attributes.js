@@ -2,7 +2,13 @@ const attributes = {
 
     types: ['Fire', 'Explosive', 'Electric', 'Blood', 'Atrophy'],
     
-    fireAttacks:      {'Fire Tornado': 8, 'Flame Breath': 10, 'Combustion': 20, 'Flame Tongue': 12,     'Third-Degree': 9},
+    fireAttacks:      {
+                       'Fire Tornado': [8,  '"My power is endless! Purifying all in the wake of my flame. Be caught in the fury of my hate! The cosmos shall know my wrath!"', '"Foolish whelp!"'], 
+                       'Flame Breath': [10, '"Hero, you\'ve come here to meet your end. I\'ve been watching you. Your deeds are impressive; but you have never faced a foe as challenging as I."', '"You don\'t stand a chance, weakling!"'], 
+                       'Combustion':   [20, '"BURN! BURN! BUUUUUUUURN!"', '"You DARE enter my lair! You will never leave this place alive. Your corpse will be displayd to your people. Then...I shall murder them all!"'], 
+                       'Flame Tongue': [12, '"How foolish of you to come here, mortal! How convenient..."', '"What were trying to achieve, coming here?"'],     
+                       'Third-Degree': [9,  '"May your flesh burn slowly...painfully...the way I will destroy your people for your trespass!"', '"You have grossly underestimated me!"']
+                        },
     
     explosiveAttacks: {'RPG': [15,'Sweet, sweet, Destruction!'],         'Airstrike': [20, 'Spreading Democracy!'],    'Grenade': [7, 'Here comes the BOOM!'],     'Laser Strike': [30, 'Zip, Zap, Zow, BITCH!'],    'Precision Strike': [10, 'Wait for it..............BOOOOM!'],   'Mortar': [8, 'Hail Mary!']},
     

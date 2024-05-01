@@ -386,3 +386,113 @@ console.log(editListString('I love, rock and r,oll')) //=> I love+ rock and r+ol
 
 //   console.log(player1.Items.indexOf('Tonic'))
     // console.log((player1.Items.filter(el => el.includes('Immovable Object')))[0][1])
+
+
+    // if (this.checkInventory('Immovable Object')) {
+                    //     this.Items.splice(this.Items.indexOf('Immovable Object'), 1)
+                    //     player1.Defense = player1.Defense + 75
+                    //     console.log('\nHero used Immovable Object! Defense +75!\n')
+                    //     console.log('Hero Attacks:', Object.keys(this.Attacks).join(', '))
+                    //     console.log('Hero Items:', this.Items.join(', '), '\n')
+
+                    // //console.log('Hero', player1.getDefenseBar(75))
+                    //     rl.close()
+                    //     console.log(boss1.bossAttackChoice(), this.playerChoice())  
+                    // } 
+                    // else  {
+                    //     console.log(`Immovable Object is not in Hero\'s Inventory! Check the Items list.\n`, this.Items.join(', '), '\n')
+                    //     rl.close()
+                    //     console.log(boss1.bossAttackChoice(), this.playerChoice()) 
+                    //     }
+
+
+                    // console.log('\nEnter a valid response please:\n', '\n RPG\n', 'Airstrike\n', 'Grenade\n', 
+                    //             'Laser Strike\n', 'Precision Strike\n', 'Mortar\n', 'Herbs\n', 'Tonic\n', 
+                    //             'Suluku\'s Blessing\n', 'Bark Shield\n', 'Steel Shield\n', 'Immovable Object\n',
+                    //             'Ancestral Boon\n', 'Shriveled Head\n')
+
+                  //   playerUseDefenseItem() {
+                  //     for (let item of this.Items) {
+                  //         //console.log(this.Items)
+                  //              //DEFENSE ITEMS//
+                  //              if (item === 'Bark Shield') {
+                  //                  this.Items.splice(this.Items.indexOf(item), 1)
+                  //                  player1.Defense = player1.Defense + 25
+                  //                  console.log('Hero used Bark Shield! Defense +25!')
+                  //                  console.log('Hero', player1.getDefenseBar(25)) 
+                  //                  console.log('')
+                  //                  return player1.DefenseState = true
+                                   
+                  //              } else if (item === 'Steel Shield') {
+                  //                  this.Items.splice(this.Items.indexOf(item), 1)
+                  //                  player1.Defense = player1.Defense + 50
+                  //                  console.log('Hero used Steel Shield! Defense +50!')
+                  //                  console.log('Hero', player1.getDefenseBar(50))
+                  //                  console.log('')
+                  //                  return player1.DefenseState = true
+              
+                  //              } else if (item === 'Immovable Object') {
+                  //                  this.Items.splice(this.Items.indexOf(item), 1)
+                  //                  player1.Defense = player1.Defense + 75
+                  //                  console.log('Hero used Immovable Object! Defense +75!')
+                  //                  console.log('Hero', player1.getDefenseBar(75))
+                  //                  console.log('')
+                  //                  return player1.DefenseState = true
+              
+                  //              }
+                  //          }   
+                  // }
+
+                  // playerUseBoostItem() {
+                  //   for (let item of this.Items) {
+                  //       //console.log(this.Items)
+                  //            //BOOST ITEMS//
+                  //           if (item === 'Ancestral Boon') {
+                  //                this.Items.splice(this.Items.indexOf(item), 1)
+                  //                if (player1.Defense === 0) {
+                  //                   console.log('Hero used Ancestral Boon! Defense Boost!')
+                  //                   console.log('')
+                  //                   return player1.Defense = player1.Defense + 50
+                                    
+                  //                }
+                                 
+                                
+                  //                console.log('Hero used Ancestral Boon! Defense Boost!')
+                  //                console.log('')
+                  //                console.log('Hero', player1.getDefenseBar(player1.Defense + player1.Defense)) 
+                                 
+                  //                return player1.Defense = player1.Defense * 2
+                  //           }
+                            //  } else if (item === 'Steel Shield') {
+                            //      this.Items.splice(this.Items.indexOf(item), 1)
+                            //      player1.Defense = player1.Defense + 50
+                            //      console.log('Hero used Steel Shield! Defense +50!')
+                            //      console.log('Hero', player1.getDefenseBar(50))
+                            //      console.log('')
+                            //      return player1.DefenseState = true
+            
+                            //  } else if (item === 'Immovable Object') {
+                            //      this.Items.splice(this.Items.indexOf(item), 1)
+                            //      player1.Defense = player1.Defense + 75
+                            //      console.log('Hero used Immovable Object! Defense +75!')
+                            //      console.log('Hero', player1.getDefenseBar(75))
+                            //      console.log('')
+            
+                //             //      return player1.DefenseState = true   
+                //     }   
+                // }
+
+                // this.Items.splice(this.Items.indexOf('Steel Shield'), 1)
+                    // player1.Defense = player1.Defense + 50
+                    // console.log('\nHero used Steel Shield! Defense +50!\n')
+                    // this.listAttacks()
+                    // this.listItems()
+                    //this.Items.splice(this.Items.indexOf('Herbs'), 1)
+                    // this.Items = this.Items.filter(el => !el.includes('Herbs'))
+
+                    // player1.Health = player1.Health + 25
+                    // console.log('\nHero used Herbs! Health +25!\n')
+                    // //console.log(this.Items.join(', '))
+                    // this.listAttacks()
+                    // this.listItems()
+                    //console.log('Hero', player1.getHealthBar()) 
