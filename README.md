@@ -1,4 +1,8 @@
 # Boss-Battle
+Text-based boss battle game. Imagine an RPG but you go straight to the final battle with a recap of the story. 
+Items, attacks, complex skills and all. 
+A game made to solidify current knowledge at App Academy. 
+
 
 NOTE IN MAIN.JS!
 
