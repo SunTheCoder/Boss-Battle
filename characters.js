@@ -2,7 +2,7 @@ const { attributes } = require(`./attributes`)
 
 
 class Characters {
-    constructor (name = '', type = '', level = null, health, defense = 0, attacks, items, defenseState = false, atkPwr, winPhrase) {
+    constructor (name = '', type = '', level = null, health, defense = 0, attacks, items, defenseState = false, atkPwr) {
         this.Name = name;
         this.Type = type;
         this.Level = level;
@@ -12,7 +12,6 @@ class Characters {
         this.Items = items
         this.DefenseState = defenseState
         this.AtkPwr = atkPwr;
-        this.WinPhrase = winPhrase;
     }
     
     //ATTRIBUTES
@@ -526,8 +525,9 @@ class Characters {
     }
     
     class Player extends Characters {
-        constructor(name, type, level, health,  defense, attacks, items, defenseState, atkPwr){
+        constructor(name, type, level, health,  defense, attacks, items, defenseState, atkPwr, winPhrase){
             super(name, type, level, health,  defense, attacks, items, defenseState, atkPwr)
+            this.winPhrase = winPhrase
         }
     }
     
