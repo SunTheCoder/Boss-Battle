@@ -4,7 +4,7 @@ const fenrirIntro = (boss) => {
 
 
     setTimeout(function() {
-        console.log('...\n')
+        console.log('\n...\n')
     }, 3000)
     setTimeout(function() {
         console.log('...\n')

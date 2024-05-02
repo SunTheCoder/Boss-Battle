@@ -112,41 +112,23 @@ class Characters {
     }
     //BATTLE
     timeoutTurn(playChar, boss) {
-        setTimeout(function() {
+        setTimeout(() => {
             console.log(boss.bossAttackChoice(), playChar.playerChoice(playChar, boss))
             console.log('o----(::::::::::>')
 
         }, 3500)
     }
-    // pAttack = (attack) => {
-    // if (this.AtkPwr <= 0) {
-    //     boss1.Health = boss1.Health - (Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number') / 2)
-    //     this.AtkPwr = this.AtkPwr * 0
-    //     console.log(`\nHero used ${attack}! ${boss1.Name} takes ${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number') / 2} damage!\n`, `\n${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'string')}\n`)
 
-    //     } else {
-    //     boss1.Health = boss1.Health - Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number')
-    //     this.AtkPwr = this.AtkPwr - Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number')
-    //     console.log(`\nHero used ${attack}! ${boss1.Name} takes ${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number')} damage!\n`, `\n${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'string')}\n`)
-
-    //     }
-
-    //     ///SET TIMEOUT FOR MORE ACTION SEQUENCE FOR ATTACKS
-        
-    //     console.log(`${boss1.Name}`, boss1.getHealthBar(), '\n', '\no----(::::::::::>\n', 'NEW TURN!\no----(::::::::::>\n')
-    //     this.listAttacks(attack)
-    //     this.listItems()
-    // }
-    pAttack = (attack, playChar, boss) => {
-        if (playChar.AtkPwr <= 0) {
-            boss.Health = boss.Health - (Object.values(playChar.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number') / 2)
+    pAttack = (attack, boss) => {
+        if (player1.AtkPwr <= 0) {
+            boss.Health = boss.Health - (Object.values(player1.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number') / 2)
             playChar.AtkPwr = playChar.AtkPwr * 0
-            console.log(`\nHero used ${attack}! ${boss.Name} takes ${Object.values(playChar.Attacks)[Object.keys(playChar.Attacks).indexOf(attack)].filter(el => typeof el === 'number') / 2} damage!\n`, `\n${Object.values(playChar.Attacks)[Object.keys(playChar.Attacks).indexOf(attack)].filter(el => typeof el === 'string')}\n`)
+            console.log(`\nHero used ${attack}! ${boss.Name} takes ${Object.values(player1.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number') / 2} damage!\n`, `\n${Object.values(player1.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'string')}\n`)
     
             } else {
-            boss.Health = boss.Health - Object.values(playChar.Attacks)[Object.keys(playChar.Attacks).indexOf(attack)].filter(el => typeof el === 'number')
-            playChar.AtkPwr = playChar.AtkPwr - Object.values(playChar.Attacks)[Object.keys(playChar.Attacks).indexOf(attack)].filter(el => typeof el === 'number')
-            console.log(`\nHero used ${attack}! ${boss.Name} takes ${Object.values(playChar.Attacks)[Object.keys(playChar.Attacks).indexOf(attack)].filter(el => typeof el === 'number')} damage!\n`, `\n${Object.values(this.Attacks)[Object.keys(playChar.Attacks).indexOf(attack)].filter(el => typeof el === 'string')}\n`)
+            boss.Health = boss.Health - Object.values(player1.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number')
+            player1.AtkPwr = player1.AtkPwr - Object.values(player1.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number')
+            console.log(`\nHero used ${attack}! ${boss.Name} takes ${Object.values(player1.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'number')} damage!\n`, `\n${Object.values(this.Attacks)[Object.keys(player1.Attacks).indexOf(attack)].filter(el => typeof el === 'string')}\n`)
     
             }
     
@@ -218,71 +200,7 @@ class Characters {
             this.listAttacks()
             this.listItems()
     }
-    fenrirIntro = () => {
-
-
-        setTimeout(function() {
-            console.log('...\n')
-        }, 3000)
-        setTimeout(function() {
-            console.log('...\n')
-        }, 6000)
-        setTimeout(function() {
-            console.log('...\n')
-        }, 9000)
-        setTimeout(function() {
-            console.log('You have traveled far...\n')
-        }, 12000)
-        setTimeout(function() {
-            console.log('Sacrificing much of who you thought you were to get here...\n')
-        }, 16000)
-        setTimeout(function() {
-            console.log('NOW! The greatest threat to all that lives is before you...\n')
-        }, 20000)
-        setTimeout(function() {
-            console.log('Will you triumph?\n')
-        }, 24000)
-        setTimeout(function() {
-            console.log(`${this.Name} is approaching...\n`)
-        }, 30000)
-        setTimeout(function() {
-            console.log('...\n')
-        }, 34000)
-        setTimeout(function() {
-            console.log('...\n')
-        }, 38000)
-        setTimeout(function() {
-            console.log('...\n')
-        }, 42000)
-        setTimeout(function() {
-             console.log(`${this.Name} towers over you. You are now in the presence of a GOD!\n`)
-            }, 46000)
-        setTimeout(function() {
-             console.log('PREPARE YOURSELF!!!\n')
-        }, 50000)
-        setTimeout(function() {
-            console.log('\n', this.logStats())
-            console.log('o----(::::::::::>\n')
-            //console.log('Boss items:', boss1.Items.join(', '))
-        }, 54000)
-        setTimeout(function() {
-            
-            console.log(player1.logStats(), '\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
-        }, 58000)
-        setTimeout(function() {
-            console.log('o----(::::::::::>\nGOOD LUCK, WARRIOR!\no----(::::::::::>')
-            console.log('\no----(::::::::::>', '\nYOUR EPIC BOSS BATTLE BEGINS!', '\no----(::::::::::>\n')
-    
-        }, 62000)
-        
-        //END OF INTRO//
-    
-        setTimeout(function() {
-        console.log('\no----(::::::::::>\nNEW TURN!\no----(::::::::::>\n')
-            console.log(boss1.bossAttackChoice(), player1.playerChoice())
-        }, 66000);
-    
-    }
+ 
     healItemUse(item) {
         let healAmount = player1.Items.filter(el => el.includes(item)).flat().flat().filter(el => typeof el === 'number').join()
         this.Health = this.Health + healAmount
@@ -292,6 +210,42 @@ class Characters {
         this.listAttacks()
         this.listItems()
     }
+    choosePlayer() {
+        const readline = require('node:readline');
+        const { stdin: input, stdout: output, features } = require('node:process');
+
+        const rl = readline.createInterface({ input, output });
+
+        rl.question('\nWhich character will you choose?\n\n -Hero (type "He")\n -Suluku (type "Su")\n\n', (choice) => {
+
+        choice = choice.toLowerCase()
+
+            if (choice === 'hero' || choice === 'he') {
+            
+                rl.close()
+                
+                player1.chooseBoss()
+            
+            } else if (choice === 'suluku' || choice === 'su') {
+                
+                rl.close()
+            
+                player1.Name = 'Suluku'
+                player1.Type = 'Atrophy'
+                player1.Level = 9
+                player1.Health = 150
+                player1.Attacks = attributes.atrophyAttacks
+                player1.AtkPwr = 100
+
+                //console.log(player1)
+
+                player1.chooseBoss()
+            
+            }
+
+        })
+    }
+
     chooseBoss() {
         const readline = require('node:readline');
         const { stdin: input, stdout: output, features } = require('node:process');
@@ -305,24 +259,22 @@ class Characters {
         if (choice === 'fenrir' || choice === 'fe') {
             let boss = boss1
             rl.close()
-            //let bound = this.bossAttackChoice.bind(boss1)
-            // let boundIntro = fenrirIntro.bind(boss1)
-            // boundIntro()
+           
             fenrirIntro(boss)
             
             setTimeout(() => {
                 console.log(boss1.logStats(), this.playerChoice(player1, boss1))
-            }, 70000)
+            }, )
 
         } else if (choice === 'sun' || choice === 'su') {
             let boss = nightmare
             rl.close()
-            //let bound = this.bossAttackChoice.bind(nightmare)
+
             nightmareIntro(boss)
 
             setTimeout(() => {
                 console.log(nightmare.logStats(), this.playerChoice(player1, nightmare))
-            }, 70000)
+            }, )
         }
     })
     }
@@ -619,14 +571,19 @@ class Characters {
                 choice = choice.toLowerCase();
                 
                 //HELP//
+
                 if (choice === 'help') {
                     this.printHelp()
                     rl.close() 
                     return this.playerChoice(playChar, boss)
                 }
+
                 //QUIT
+
                 else if (choice === 'quit' || choice === 'q') rl.close()
+
                 //DISPLAY//
+
                 else if (choice === 'pstats') {
                     console.log('\n', playChar.logStats())
                     playChar.listItems()
@@ -638,39 +595,70 @@ class Characters {
                     rl.close() 
                     return this.playerChoice(playChar, boss)
                 }
+
                 //EXPLOSIVE ATTACKS//
+
                 else if (choice === 'rpg' || choice === 'rp') {  
-                    this.pAttack('RPG', playChar, boss)
+                    this.pAttack('RPG', boss)
                     rl.close()   
                     this.timeoutTurn(playChar, boss)
                 }
                 else if (choice === 'airstrike' || choice === 'ai') {
-                    this.pAttack('Airstrike', playChar, boss)
+                    this.pAttack('Airstrike', boss)
                     rl.close()
                     this.timeoutTurn(playChar, boss)    
                 }
                 else if (choice === 'grenade' || choice === 'gr') {
-                    this.pAttack('Grenade', playChar, boss)
+                    this.pAttack('Grenade', boss)
                     rl.close()   
                     this.timeoutTurn(playChar, boss)
                 }
                 else if (choice === 'laser strike' || choice === 'la') {
-                    this.pAttack('Laser Strike', playChar, boss)
+                    this.pAttack('Laser Strike', boss)
                     rl.close()   
                     this.timeoutTurn(playChar, boss)
                 }
                 else if (choice === 'precision strike' || choice === 'pr') {
-                    this.pAttack('Precision Strike', playChar, boss)
+                    this.pAttack('Precision Strike', boss)
                     rl.close()   
                     this.timeoutTurn(playChar, boss)
                     } 
                 else if (choice === 'mortar' || choice === 'mo') {
-                    this.pAttack('Mortar', playChar, boss)
+                    this.pAttack('Mortar', boss)
                     rl.close()   
                     this.timeoutTurn(playChar, boss)
-                    } 
+                    }
+
+                //ATROPHY ATTACKS//
+
+                else if (choice === 'poison dart' || choice === 'po') {
+                    this.pAttack('Poison Dart', boss)
+                    rl.close()
+                    this.timeoutTurn(playChar, boss)
+                }
+                else if (choice === 'touch of death' || choice === 'to') {
+                    this.pAttack('Touch of Death', boss)
+                    rl.close()
+                    this.timeoutTurn(playChar, boss)
+                }
+                else if (choice === 'transition' || choice === 'tr') {
+                    this.pAttack('Transition', boss)
+                    rl.close()
+                    this.timeoutTurn(playChar, boss)
+                }
+                else if (choice === 'ashes to ashes' || choice === 'as') {
+                    this.pAttack('Ashes to Ashes', boss)
+                    rl.close()
+                    this.timeoutTurn(playChar, boss)
+                }
+                else if (choice === 'zulu spear' || choice === 'zu') {
+                    this.pAttack('Zulu Spear', boss)
+                    rl.close()
+                    this.timeoutTurn(playChar, boss)
+                }
 
                 //HEALING ITEMS//
+
                 else if (choice === 'herbs' || choice === 'he') { ////bind a readline?
                     let item = 'Herbs'
                     if (this.checkInventory(item)) {
@@ -961,6 +949,8 @@ class Characters {
     
     const player1 = new Player('Hero', 'Explosive', 7, 100, 0, attributes.explosiveAttacks, false, null, 100)
 
+    const suluku = new Player('Suluku', 'Atrophy', 9, 150, 0, attributes.atrophyAttacks, false, null, 100)
+
     //player1: 'Hero', 'Explosive', 7, 85, 0, attributes.explosiveAttacks, false, null, 100
 
 module.exports = {
@@ -968,5 +958,6 @@ module.exports = {
     Boss,
     Player,
     boss1,
-    player1
+    player1,
+    suluku
 }
