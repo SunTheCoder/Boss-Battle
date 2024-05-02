@@ -1,6 +1,7 @@
 const { attributes } = require(`./attributes`);
 const fenrirIntro = require('./fenririntro');
-const nightmareIntro = require('./nightmareintro')
+const nightmareIntro = require('./nightmareintro');
+const sulukuIntro = require('./sulukuintro');
 
 
 class Characters {
@@ -227,12 +228,14 @@ class Characters {
         this.listItems()
     }
     choosePlayer() {
+        console.log('\no----(::::::::::>')
+
         const readline = require('node:readline');
         const { stdin: input, stdout: output, features } = require('node:process');
 
         const rl = readline.createInterface({ input, output });
 
-        rl.question('\nWhich character will you choose?\n\n -Hero (type "He")\n -Suluku (type "Su")\n -Storm (type "St")\n\n', (choice) => {
+        rl.question('\nWhich character will you choose?\n\n -Hero [Level 8, Explosive Attacks] (type "He")\n -Suluku [Level 9, Atrophy Attacks] (type "Su")\n -Storm [Level 8, Electric Attacks] (type "St")\n\n', (choice) => {
 
         choice = choice.toLowerCase()
 
@@ -245,14 +248,19 @@ class Characters {
                 
                 rl.close()     
                 player1.getSuluku()
-                player1.chooseBoss()
-            
+                sulukuIntro()
+                setTimeout(() => { 
+                    player1.chooseBoss()
+                }, 8000)
             } else if (choice === 'storm' || choice === 'st') {
                 
                 rl.close()     
                 player1.getStorm()
-                player1.chooseBoss()
-            
+                //intro
+                setTimeout(() => { 
+                    player1.chooseBoss()
+                }, 8000)
+                    
             }
 
         })
@@ -264,7 +272,8 @@ class Characters {
 
         const rl = readline.createInterface({ input, output });
 
-        rl.question('\nWhich story will you choose?\n\n -The Demise of Fenrir (type "Fe")\n -The Sun Rises (type "Su")\n\n', (choice) => {
+       
+        rl.question('\nWhich story will you choose?\n\n -The Demise of Fenrir (type "Fe")\n -The Nightmare Ends (type "Ni")\n\no----(::::::::::>\n\n', (choice) => {
 
         choice = choice.toLowerCase()
 
@@ -278,7 +287,7 @@ class Characters {
                 console.log(boss1.logStats(), this.playerChoice(player1, boss1))
             }, 70000)
 
-        } else if (choice === 'sun' || choice === 'su') {
+        } else if (choice === 'nightmare' || choice === 'ni') {
             let boss = nightmare
             rl.close()
 
@@ -290,7 +299,6 @@ class Characters {
         }
     })
     }
-
     
     // playerChoice() {
     //     if (boss1.Health <= 0) {
@@ -550,9 +558,6 @@ class Characters {
     //     return ''
     // }
     
-
-
-     
     playerChoice(playChar, boss) {
         
         if (boss.Health <= 0) {
