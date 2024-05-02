@@ -86,6 +86,22 @@ class Characters {
         
         return this.Items = arr
     }
+    getSuluku() {
+        player1.Name = 'Suluku'
+        player1.Type = 'Atrophy'
+        player1.Level = 9
+        player1.Health = 150
+        player1.Attacks = attributes.atrophyAttacks
+        player1.AtkPwr = 100
+    }
+    getStorm() {
+        player1.Name = 'Storm'
+        player1.Type = 'Electric'
+        player1.Level = 8
+        player1.Health = 125
+        player1.Attacks = attributes.electricAttacks
+        player1.AtkPwr = 150
+    }
     logStats() {
         console.log(this.getName())
         console.log(this.getType())
@@ -216,29 +232,25 @@ class Characters {
 
         const rl = readline.createInterface({ input, output });
 
-        rl.question('\nWhich character will you choose?\n\n -Hero (type "He")\n -Suluku (type "Su")\n\n', (choice) => {
+        rl.question('\nWhich character will you choose?\n\n -Hero (type "He")\n -Suluku (type "Su")\n -Storm (type "St")\n\n', (choice) => {
 
         choice = choice.toLowerCase()
 
             if (choice === 'hero' || choice === 'he') {
             
                 rl.close()
-                
                 player1.chooseBoss()
             
             } else if (choice === 'suluku' || choice === 'su') {
                 
-                rl.close()
+                rl.close()     
+                player1.getSuluku()
+                player1.chooseBoss()
             
-                player1.Name = 'Suluku'
-                player1.Type = 'Atrophy'
-                player1.Level = 9
-                player1.Health = 150
-                player1.Attacks = attributes.atrophyAttacks
-                player1.AtkPwr = 100
-
-                //console.log(player1)
-
+            } else if (choice === 'storm' || choice === 'st') {
+                
+                rl.close()     
+                player1.getStorm()
                 player1.chooseBoss()
             
             }
@@ -264,7 +276,7 @@ class Characters {
             
             setTimeout(() => {
                 console.log(boss1.logStats(), this.playerChoice(player1, boss1))
-            }, )
+            }, 70000)
 
         } else if (choice === 'sun' || choice === 'su') {
             let boss = nightmare
@@ -274,7 +286,7 @@ class Characters {
 
             setTimeout(() => {
                 console.log(nightmare.logStats(), this.playerChoice(player1, nightmare))
-            }, )
+            }, 70000)
         }
     })
     }
