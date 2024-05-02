@@ -1,4 +1,6 @@
-const { attributes } = require(`./attributes`)
+const { attributes } = require(`./attributes`);
+const fenrirIntro = require('./fenririntro');
+const nightmareIntro = require('./nightmareintro')
 
 
 class Characters {
@@ -216,6 +218,71 @@ class Characters {
             this.listAttacks()
             this.listItems()
     }
+    fenrirIntro = () => {
+
+
+        setTimeout(function() {
+            console.log('...\n')
+        }, 3000)
+        setTimeout(function() {
+            console.log('...\n')
+        }, 6000)
+        setTimeout(function() {
+            console.log('...\n')
+        }, 9000)
+        setTimeout(function() {
+            console.log('You have traveled far...\n')
+        }, 12000)
+        setTimeout(function() {
+            console.log('Sacrificing much of who you thought you were to get here...\n')
+        }, 16000)
+        setTimeout(function() {
+            console.log('NOW! The greatest threat to all that lives is before you...\n')
+        }, 20000)
+        setTimeout(function() {
+            console.log('Will you triumph?\n')
+        }, 24000)
+        setTimeout(function() {
+            console.log(`${this.Name} is approaching...\n`)
+        }, 30000)
+        setTimeout(function() {
+            console.log('...\n')
+        }, 34000)
+        setTimeout(function() {
+            console.log('...\n')
+        }, 38000)
+        setTimeout(function() {
+            console.log('...\n')
+        }, 42000)
+        setTimeout(function() {
+             console.log(`${this.Name} towers over you. You are now in the presence of a GOD!\n`)
+            }, 46000)
+        setTimeout(function() {
+             console.log('PREPARE YOURSELF!!!\n')
+        }, 50000)
+        setTimeout(function() {
+            console.log('\n', this.logStats())
+            console.log('o----(::::::::::>\n')
+            //console.log('Boss items:', boss1.Items.join(', '))
+        }, 54000)
+        setTimeout(function() {
+            
+            console.log(player1.logStats(), '\nHero Items:\n', '\n ', player1.editListString(player1.Items.map(item => item[0] + ': ' + item[1]).join(' | ')), '\n')
+        }, 58000)
+        setTimeout(function() {
+            console.log('o----(::::::::::>\nGOOD LUCK, WARRIOR!\no----(::::::::::>')
+            console.log('\no----(::::::::::>', '\nYOUR EPIC BOSS BATTLE BEGINS!', '\no----(::::::::::>\n')
+    
+        }, 62000)
+        
+        //END OF INTRO//
+    
+        setTimeout(function() {
+        console.log('\no----(::::::::::>\nNEW TURN!\no----(::::::::::>\n')
+            console.log(boss1.bossAttackChoice(), player1.playerChoice())
+        }, 66000);
+    
+    }
     healItemUse(item) {
         let healAmount = player1.Items.filter(el => el.includes(item)).flat().flat().filter(el => typeof el === 'number').join()
         this.Health = this.Health + healAmount
@@ -227,24 +294,35 @@ class Characters {
     }
     chooseBoss() {
         const readline = require('node:readline');
-        const { stdin: input, stdout: output } = require('node:process');
+        const { stdin: input, stdout: output, features } = require('node:process');
 
         const rl = readline.createInterface({ input, output });
 
-        rl.question('\Which story will you choose?\n -The Demise of Fenrir (type "Fe")\n -The Sun Rises (type "Su")\n', (choice) => {
+        rl.question('\nWhich story will you choose?\n\n -The Demise of Fenrir (type "Fe")\n -The Sun Rises (type "Su")\n\n', (choice) => {
 
         choice = choice.toLowerCase()
 
         if (choice === 'fenrir' || choice === 'fe') {
-            //let boss = boss1
+            let boss = boss1
             rl.close()
             //let bound = this.bossAttackChoice.bind(boss1)
-            console.log(boss1.logStats(), this.playerChoice(player1, boss1))
+            // let boundIntro = fenrirIntro.bind(boss1)
+            // boundIntro()
+            fenrirIntro(boss)
+            
+            setTimeout(() => {
+                console.log(boss1.logStats(), this.playerChoice(player1, boss1))
+            }, 70000)
+
         } else if (choice === 'sun' || choice === 'su') {
-            //let boss = nightmare
+            let boss = nightmare
             rl.close()
             //let bound = this.bossAttackChoice.bind(nightmare)
-            console.log(nightmare.logStats(), this.playerChoice(player1, nightmare))
+            nightmareIntro(boss)
+
+            setTimeout(() => {
+                console.log(nightmare.logStats(), this.playerChoice(player1, nightmare))
+            }, 70000)
         }
     })
     }
@@ -512,6 +590,7 @@ class Characters {
 
      
     playerChoice(playChar, boss) {
+        
         if (boss.Health <= 0) {
             console.log('\no----(::::::::::>\n', 'YOU ARE TRIUMPHANT, HERO!')
             console.log('o----(::::::::::>')
